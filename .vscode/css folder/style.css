@@ -1,11 +1,11 @@
 :root {
     /* Primary Colors - Change these to match school colors */
-    --primary-color: #2563eb;      /* Main blue - CHANGE THIS */
+    --primary-color: #1565C0;      /* Main blue - CHANGE THIS */
     --primary-dark: #1e40af;       /* Darker blue */
     --primary-light: #3b82f6;      /* Lighter blue */
     
     /* Secondary Colors */
-    --secondary-color: #10b981;    /* Green - CHANGE THIS */
+    --secondary-color: #c62828;    /* Green - CHANGE THIS */
     --secondary-dark: #059669;
     --secondary-light: #34d399;
     
