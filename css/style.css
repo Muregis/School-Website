@@ -178,8 +178,16 @@ ul {
     overflow: hidden;
 }
 
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+  linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    url('../images/hero-bg.jpeg') center center / cover no-repeat;
+  animation: heroZoom 22s ease-in-out infinite alternate;
+}
+
 .hero-overlay {
-    position: absolute;
+    position: relative;
     top: 0;
     left: 0;
     right: 0;
@@ -1201,4 +1209,195 @@ section {
     .fee-download-cta {
         padding: 30px 20px;
     }
+}
+/* ===== HERO TEXT BACKGROUND & ANIMATIONS ===== */
+
+/* Add semi-transparent background behind text */
+.hero-content {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    padding: 50px 40px;
+    border-radius: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+/* Fade in animation for title */
+.hero-title {
+    animation: fadeInDown 1s ease-out 0.3s both;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Fade in animation for subtitle */
+.hero-subtitle {
+    animation: fadeInUp 1s ease-out 0.6s both;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Fade in animation for buttons */
+.hero-buttons {
+    animation: fadeInUp 1s ease-out 0.9s both;
+}
+
+/* Button hover effect */
+.hero-buttons .btn:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+}
+
+/* Scroll indicator animation */
+.scroll-indicator {
+    animation: bounce 2s infinite, fadeIn 1.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+/* Background slideshow animation */
+.hero-bg {
+    animation: bgSlideshow 20s ease-in-out infinite;
+}
+
+@keyframes bgSlideshow {
+    0%, 33% {
+        background-image: 
+            linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%),
+            url('../images/hero-bg.jpeg');
+    }
+    34%, 66% {
+        background-image: 
+            linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%),
+            url('../images/gallery-1.jpeg');
+    }
+    67%, 100% {
+        background-image: 
+            linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%),
+            url('../images/gallery-2.jpeg');
+    }
+}
+/* ===== MORE SCHOOL COLORS THROUGHOUT ===== */
+
+/* Colored section headers */
+.section-title {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Colored info cards */
+.info-item {
+    background: linear-gradient(135deg, rgba(21, 101, 192, 0.1), rgba(198, 40, 40, 0.1));
+    border-left: 4px solid var(--primary-color);
+}
+
+/* Colored program cards */
+.program-card {
+    border-top: 4px solid var(--primary-color);
+}
+
+.program-card:nth-child(2) {
+    border-top-color: var(--secondary-color);
+}
+
+.program-card:nth-child(3) {
+    border-top-color: var(--primary-color);
+}
+
+/* Colored feature boxes */
+.feature-box {
+    border-bottom: 4px solid var(--primary-color);
+    background: linear-gradient(to bottom, var(--white), rgba(21, 101, 192, 0.05));
+}
+
+.feature-box:nth-child(even) {
+    border-bottom-color: var(--secondary-color);
+    background: linear-gradient(to bottom, var(--white), rgba(198, 40, 40, 0.05));
+}
+
+/* Colored gallery overlay */
+.gallery-overlay {
+    background: linear-gradient(135deg, rgba(21, 101, 192, 0.95), rgba(198, 40, 40, 0.95));
+}
+
+/* Colored testimonial cards */
+.testimonial-card {
+    border-left: 5px solid var(--primary-color);
+    background: linear-gradient(to right, rgba(21, 101, 192, 0.05), var(--white));
+}
+
+/* Colored contact info boxes */
+.info-box {
+    background: linear-gradient(135deg, rgba(21, 101, 192, 0.08), rgba(198, 40, 40, 0.08));
+    border-left: 4px solid var(--primary-color);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+/* Colored form background */
+.contact-form {
+    background: linear-gradient(135deg, rgba(21, 101, 192, 0.05), rgba(198, 40, 40, 0.05));
+}
+
+/* Colored fee cards */
+.fee-quick-card:nth-child(odd) {
+    border-top-color: var(--primary-color);
+    background: linear-gradient(to bottom, var(--white), rgba(21, 101, 192, 0.05));
+}
+
+.fee-quick-card:nth-child(even) {
+    border-top-color: var(--secondary-color);
+    background: linear-gradient(to bottom, var(--white), rgba(198, 40, 40, 0.05));
+}
+
+/* Add subtle color to section backgrounds */
+.about {
+    background: linear-gradient(to bottom, rgba(21, 101, 192, 0.03), var(--light-gray));
+}
+
+.why-choose {
+    background: linear-gradient(to bottom, rgba(198, 40, 40, 0.03), var(--light-gray));
+}
+
+/* Colored links */
+a:not(.btn):hover {
+    color: var(--primary-color);
+}
+
+/* Colorful quick info stats */
+.info-item:nth-child(1) {
+    border-left-color: var(--primary-color);
+}
+
+.info-item:nth-child(2) {
+    border-left-color: var(--secondary-color);
+}
+
+.info-item:nth-child(3) {
+    border-left-color: var(--primary-color);
+}
+
+.info-item:nth-child(4) {
+    border-left-color: var(--secondary-color);
 }
