@@ -3,7 +3,6 @@ backend:
   repo: muregis/School-Website
   branch: main
   base_url: https://api.netlify.com
-  auth_endpoint: auth
 
 media_folder: images/uploads
 public_folder: /images/uploads
