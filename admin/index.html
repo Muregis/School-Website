@@ -1,13 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Content Manager — Gracious Love Academy</title>
-  <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
-</head>
-<body>
-  <!-- Decap CMS -->
-  <script src="https://unpkg.com/decap-cms@^3.1.10/dist/decap-cms.js"></script>
-</body>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>Content Manager — Gracious Love Academy</title>
+
+    <script src="https://unpkg.com/decap-cms@^3.1.10/dist/decap-cms.js"></script>
+  </head>
+  <body>
+    <script>
+      window.CMS_MANUAL_INIT = true;
+
+      CMS.init({
+        config: {
+          load_config_file: false,
+          backend: {
+            name: "github",
+            repo: "muregis/School-Website",
+            branch: "main",
+            base_url: "https://api.netlify.com",
+            auth_endpoint: "auth"
+          },
+          media_folder: "images/uploads",
+          public_folder: "/images/uploads",
+          collections: [
+            // We will load the full config from the YAML file instead
+          ]
+        }
+      });
+    </script>
+
+    <!-- Load the actual config.yml -->
+    <script>
+      fetch('/admin/config.yml')
+        .then(response => response.text())
+        .then(yaml => {
+          // This forces Decap to use the correct config file
+          CMS.registerConfig(yaml);
+        });
+    </script>
+  </body>
 </html>
