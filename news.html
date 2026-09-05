@@ -125,30 +125,34 @@
     <script src="js/script.js"></script>
     <script>
     async function loadNews() {
+        let posts = null;
         try {
-            const res = await fetch('content/news/_index.json');
-            if (!res.ok) return;
-            const posts = await res.json();
-            const grid = document.getElementById('news-grid');
-            if (!grid) return;
-            if (posts.length === 0) {
-                grid.innerHTML = '<p style="text-align:center; color: var(--muted);">No news posts yet. Check back soon.</p>';
-                return;
-            }
-            grid.innerHTML = posts.map(post => `
-                <article class="news-card">
-                    ${post.image ? `<div class="news-image"><img src="${post.image}" alt="${post.title}" loading="lazy"></div>` : ''}
-                    <div class="news-content">
-                        <time class="news-date">${post.date}</time>
-                        <h3>${post.title}</h3>
-                        <p>${post.excerpt || post.body.substring(0, 180) + '...'}</p>
-                        <a href="news.html#${post.slug}" class="news-link">Read more <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </article>
-            `).join('');
-        } catch (e) {
-            console.warn('Could not load news data');
+            const res = await fetch('/api/content/news');
+            if (res.ok) posts = await res.json();
+        } catch {}
+        if (!posts) {
+            try {
+                const res = await fetch('content/news/_index.json');
+                if (res.ok) posts = await res.json();
+            } catch {}
         }
+        const grid = document.getElementById('news-grid');
+        if (!grid || !posts) return;
+        if (posts.length === 0) {
+            grid.innerHTML = '<p style="text-align:center; color: var(--muted);">No news posts yet. Check back soon.</p>';
+            return;
+        }
+        grid.innerHTML = posts.map(post => `
+            <article class="news-card">
+                ${post.image ? `<div class="news-image"><img src="${post.image}" alt="${post.title}" loading="lazy"></div>` : ''}
+                <div class="news-content">
+                    <time class="news-date">${post.date}</time>
+                    <h3>${post.title}</h3>
+                    <p>${post.excerpt || post.body.substring(0, 180) + '...'}</p>
+                    <a href="news.html#${post.slug}" class="news-link">Read more <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </article>
+        `).join('');
     }
     loadNews();
     </script>

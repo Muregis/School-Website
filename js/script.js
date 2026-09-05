@@ -151,7 +151,7 @@ fadeEls.forEach(el => el.classList.add('fade-up'));
 window.addEventListener('scroll', checkFade);
 window.addEventListener('load', checkFade);
 
-// Dynamic content loaders
+// Dynamic content loaders - try API first, fall back to local JSON
 async function loadJSON(path) {
     try {
         const res = await fetch(path);
@@ -163,10 +163,19 @@ async function loadJSON(path) {
     }
 }
 
+async function loadContent(type, localPath) {
+    const apiPath = '/api/content/' + type;
+    let data = await loadJSON(apiPath);
+    if (!data) {
+        data = await loadJSON(localPath);
+    }
+    return data;
+}
+
 async function initTeam() {
     const grid = document.getElementById('team-grid');
     if (!grid) return;
-    const team = await loadJSON('content/team/_index.json');
+    const team = await loadContent('team', 'content/team/_index.json');
     if (!team || !team.length) {
         grid.innerHTML = '<p style="text-align:center; color: var(--muted);">Team information coming soon.</p>';
         return;
@@ -189,7 +198,7 @@ async function initTeam() {
 async function initNews() {
     const grid = document.getElementById('news-grid');
     if (!grid) return;
-    const posts = await loadJSON('content/news/_index.json');
+    const posts = await loadContent('news', 'content/news/_index.json');
     if (!posts || !posts.length) {
         grid.innerHTML = '<p style="text-align:center; color: var(--muted);">No news posts yet. Check back soon.</p>';
         return;
@@ -210,7 +219,7 @@ async function initNews() {
 async function initGallery() {
     const grid = document.getElementById('gallery-grid');
     if (!grid) return;
-    const items = await loadJSON('content/gallery/_index.json');
+    const items = await loadContent('gallery', 'content/gallery/_index.json');
     if (!items || !items.length) {
         grid.innerHTML = '<p style="text-align:center; color: var(--muted);">Gallery coming soon.</p>';
         return;
@@ -227,7 +236,7 @@ async function initGallery() {
 async function initCalendar() {
     const grid = document.getElementById('calendar-grid');
     if (!grid) return;
-    const data = await loadJSON('content/events/term-dates.json');
+    const data = await loadContent('events', 'content/events/term-dates.json');
     if (!data) return;
     let html = `
         <div class="terms-card">

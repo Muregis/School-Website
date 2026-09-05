@@ -125,26 +125,30 @@
     <script src="js/script.js"></script>
     <script>
     async function loadGallery() {
+        let items = null;
         try {
-            const res = await fetch('content/gallery/_index.json');
-            if (!res.ok) return;
-            const items = await res.json();
-            const grid = document.getElementById('gallery-grid');
-            if (!grid) return;
-            if (items.length === 0) {
-                grid.innerHTML = '<p style="text-align:center; color: var(--muted);">Gallery coming soon.</p>';
-                return;
-            }
-            grid.innerHTML = items.map(item => `
-                <div class="gallery-item">
-                    <img src="${item.image}" alt="${item.alt || ''}" loading="lazy">
-                    <div class="gallery-overlay"><i class="fas fa-search-plus"></i><span>${item.caption || ''}</span></div>
-                </div>
-            `).join('');
-            initGalleryLightbox();
-        } catch (e) {
-            console.warn('Could not load gallery data');
+            const res = await fetch('/api/content/gallery');
+            if (res.ok) items = await res.json();
+        } catch {}
+        if (!items) {
+            try {
+                const res = await fetch('content/gallery/_index.json');
+                if (res.ok) items = await res.json();
+            } catch {}
         }
+        const grid = document.getElementById('gallery-grid');
+        if (!grid || !items) return;
+        if (items.length === 0) {
+            grid.innerHTML = '<p style="text-align:center; color: var(--muted);">Gallery coming soon.</p>';
+            return;
+        }
+        grid.innerHTML = items.map(item => `
+            <div class="gallery-item">
+                <img src="${item.image}" alt="${item.alt || ''}" loading="lazy">
+                <div class="gallery-overlay"><i class="fas fa-search-plus"></i><span>${item.caption || ''}</span></div>
+            </div>
+        `).join('');
+        initGalleryLightbox();
     }
     loadGallery();
     </script>

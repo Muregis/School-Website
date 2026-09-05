@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard — Gracious Love Academy</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" />
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: #faf8f5;
+            color: #2d2d2d;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .admin-header {
+            background: #1a2744;
+            color: white;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .admin-header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .admin-header-left i {
+            font-size: 1.25rem;
+            color: #c4704b;
+        }
+        .admin-header-left span {
+            font-weight: 700;
+            font-size: 1rem;
+        }
+        .admin-header-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .admin-header-right a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .admin-header-right a:hover {
+            color: white;
+        }
+        .admin-layout {
+            display: flex;
+            flex: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        .admin-sidebar {
+            width: 260px;
+            background: white;
+            border-right: 1px solid #e5e7eb;
+            padding: 24px 0;
+            position: sticky;
+            top: 60px;
+            height: calc(100vh - 60px);
+            overflow-y: auto;
+        }
+        .admin-sidebar-nav {
+            list-style: none;
+        }
+        .admin-sidebar-nav li {
+            margin: 4px 16px;
+        }
+        .admin-sidebar-nav button {
+            width: 100%;
+            text-align: left;
+            padding: 12px 16px;
+            border: none;
+            background: none;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 0.9375rem;
+            font-weight: 500;
+            color: #6b7280;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.2s;
+        }
+        .admin-sidebar-nav button:hover {
+            background: #faf8f5;
+            color: #1a2744;
+        }
+        .admin-sidebar-nav button.active {
+            background: #1a2744;
+            color: white;
+        }
+        .admin-sidebar-nav button i {
+            width: 20px;
+            text-align: center;
+            font-size: 0.875rem;
+        }
+        .admin-main {
+            flex: 1;
+            padding: 32px;
+            overflow-y: auto;
+        }
+        .admin-section {
+            display: none;
+        }
+        .admin-section.active {
+            display: block;
+        }
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #1a2744;
+            margin-bottom: 8px;
+        }
+        .section-desc {
+            color: #6b7280;
+            font-size: 0.9375rem;
+            margin-bottom: 24px;
+        }
+        .card {
+            background: white;
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+        .card-title {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: #1a2744;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #1a2744;
+            margin-bottom: 8px;
+        }
+        .form-group label .required {
+            color: #c4704b;
+        }
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 0.9375rem;
+            font-family: inherit;
+            transition: border-color 0.2s;
+            outline: none;
+            background: white;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: #c4704b;
+        }
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 0.9375rem;
+            font-weight: 600;
+            font-family: inherit;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+        .btn-primary {
+            background: #c4704b;
+            color: white;
+        }
+        .btn-primary:hover {
+            background: #a35d3a;
+            transform: translateY(-1px);
+        }
+        .btn-primary:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .btn-secondary {
+            background: white;
+            color: #1a2744;
+            border: 2px solid #e5e7eb;
+        }
+        .btn-secondary:hover {
+            background: #faf8f5;
+            border-color: #1a2744;
+        }
+        .btn-danger {
+            background: #fee2e2;
+            color: #b91c1c;
+        }
+        .btn-danger:hover {
+            background: #fecaca;
+        }
+        .btn-sm {
+            padding: 8px 16px;
+            font-size: 0.8125rem;
+        }
+        .actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+            padding-top: 20px;
+            border-top: 1px solid #e5e7eb;
+        }
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            padding: 16px 24px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.9375rem;
+            z-index: 1000;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s ease;
+            max-width: 400px;
+        }
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .toast.success {
+            background: #1a2744;
+            color: white;
+        }
+        .toast.error {
+            background: #b91c1c;
+            color: white;
+        }
+        .item-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .item-row {
+            background: #faf8f5;
+            border-radius: 10px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            border: 1px solid #e5e7eb;
+        }
+        .item-row img {
+            width: 64px;
+            height: 64px;
+            object-fit: cover;
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+        .item-row .item-info {
+            flex: 1;
+            min-width: 0;
+        }
+        .item-row .item-title {
+            font-weight: 600;
+            color: #1a2744;
+            font-size: 0.9375rem;
+        }
+        .item-row .item-meta {
+            font-size: 0.8125rem;
+            color: #6b7280;
+            margin-top: 2px;
+        }
+        .item-row .item-actions {
+            display: flex;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+        .upload-preview {
+            margin-top: 12px;
+            border-radius: 8px;
+            overflow: hidden;
+            max-height: 200px;
+            display: none;
+        }
+        .upload-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .upload-preview.visible {
+            display: block;
+        }
+        .preview-box {
+            background: #faf8f5;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            border: 1px dashed #e5e7eb;
+        }
+        .preview-box h4 {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 12px;
+        }
+        .preview-content {
+            background: white;
+            border-radius: 8px;
+            padding: 16px;
+            border: 1px solid #e5e7eb;
+        }
+        @media (max-width: 768px) {
+            .admin-sidebar {
+                display: none;
+            }
+            .admin-main {
+                padding: 16px;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            .admin-header-left span {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="admin-header">
+        <div class="admin-header-left">
+            <i class="fas fa-graduation-cap"></i>
+            <span>Gracious Love Academy — Admin</span>
+        </div>
+        <div class="admin-header-right">
+            <a href="/" target="_blank">View Website <i class="fas fa-external-link-alt"></i></a>
+            <a href="#" id="logout-btn">Log Out</a>
+        </div>
+    </header>
+    
+    <div class="admin-layout">
+        <aside class="admin-sidebar">
+            <nav>
+                <ul class="admin-sidebar-nav">
+                    <li><button data-section="settings" class="active"><i class="fas fa-home"></i> Homepage</button></li>
+                    <li><button data-section="team"><i class="fas fa-users"></i> Team</button></li>
+                    <li><button data-section="news"><i class="fas fa-newspaper"></i> News</button></li>
+                    <li><button data-section="gallery"><i class="fas fa-images"></i> Gallery</button></li>
+                    <li><button data-section="events"><i class="fas fa-calendar-alt"></i> Term Dates</button></li>
+                </ul>
+            </nav>
+        </aside>
+        
+        <main class="admin-main">
+            <!-- Settings Section -->
+            <section class="admin-section active" id="section-settings">
+                <h2 class="section-title">Homepage Settings</h2>
+                <p class="section-desc">Update the text that appears on your homepage.</p>
+                
+                <div class="card">
+                    <div class="card-title">Hero Section</div>
+                    <div class="form-group">
+                        <label>Hero Badge</label>
+                        <input type="text" id="setting-hero_badge" placeholder="e.g. Knowledge for Diversity">
+                    </div>
+                    <div class="form-group">
+                        <label>Hero Title</label>
+                        <input type="text" id="setting-hero_title" placeholder="e.g. Where every child is known">
+                    </div>
+                    <div class="form-group">
+                        <label>Hero Subtitle</label>
+                        <textarea id="setting-hero_subtitle" placeholder="Short description under the title..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>CTA Button Text</label>
+                        <input type="text" id="setting-cta_text" placeholder="e.g. Book a Visit">
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-title">Contact Details</div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="text" id="setting-phone" placeholder="+254 727 345 438">
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" id="setting-email" placeholder="info@school.ac.ke">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>WhatsApp Link</label>
+                        <input type="text" id="setting-whatsapp_link" placeholder="https://wa.me/254727345438">
+                    </div>
+                </div>
+                
+                <div class="actions">
+                    <button class="btn btn-primary" onclick="saveSettings()">
+                        <i class="fas fa-save"></i> Save Changes
+                    </button>
+                </div>
+            </section>
+            
+            <!-- Team Section -->
+            <section class="admin-section" id="section-team">
+                <h2 class="section-title">Team Members</h2>
+                <p class="section-desc">Add and manage teacher profiles that appear on the Team page.</p>
+                
+                <div class="card">
+                    <div class="card-title">Add New Team Member</div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Full Name <span class="required">*</span></label>
+                            <input type="text" id="team-name" placeholder="e.g. Mrs. Grace Muthoni">
+                        </div>
+                        <div class="form-group">
+                            <label>Role <span class="required">*</span></label>
+                            <input type="text" id="team-role" placeholder="e.g. Headteacher">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Short Bio</label>
+                        <textarea id="team-bio" placeholder="A short description of this person..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Years of Experience</label>
+                        <input type="text" id="team-years" placeholder="e.g. 12 years experience">
+                    </div>
+                    <div class="form-group">
+                        <label>Photo</label>
+                        <input type="file" id="team-photo-file" accept="image/*" style="padding: 8px;">
+                        <input type="hidden" id="team-photo">
+                        <div class="upload-preview" id="team-photo-preview"></div>
+                        <p style="font-size: 0.8125rem; color: #6b7280; margin-top: 6px;">Square photos work best (1:1 ratio). JPG or PNG.</p>
+                    </div>
+                    <div class="actions">
+                        <button class="btn btn-primary" onclick="addTeamMember()">
+                            <i class="fas fa-plus"></i> Add Team Member
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-title">Current Team Members</div>
+                    <div class="item-list" id="team-list">
+                        <p style="color: #6b7280; text-align: center; padding: 24px;">Loading...</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- News Section -->
+            <section class="admin-section" id="section-news">
+                <h2 class="section-title">News & Updates</h2>
+                <p class="section-desc">Share school news, events, and updates with parents.</p>
+                
+                <div class="card">
+                    <div class="card-title">Add New Post</div>
+                    <div class="form-group">
+                        <label>Title <span class="required">*</span></label>
+                        <input type="text" id="news-title" placeholder="e.g. PP2 Graduation Ceremony 2026">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Date <span class="required">*</span></label>
+                            <input type="date" id="news-date">
+                        </div>
+                        <div class="form-group">
+                            <label>Image</label>
+                            <input type="file" id="news-image-file" accept="image/*" style="padding: 8px;">
+                            <input type="hidden" id="news-image">
+                            <div class="upload-preview" id="news-image-preview"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Short Description</label>
+                        <input type="text" id="news-excerpt" placeholder="A one-sentence summary for the homepage...">
+                    </div>
+                    <div class="form-group">
+                        <label>Full Story</label>
+                        <textarea id="news-body" placeholder="Write the full news story here..."></textarea>
+                    </div>
+                    <div class="actions">
+                        <button class="btn btn-primary" onclick="addNewsPost()">
+                            <i class="fas fa-plus"></i> Publish Post
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-title">Published Posts</div>
+                    <div class="item-list" id="news-list">
+                        <p style="color: #6b7280; text-align: center; padding: 24px;">Loading...</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Gallery Section -->
+            <section class="admin-section" id="section-gallery">
+                <h2 class="section-title">Gallery</h2>
+                <p class="section-desc">Upload photos that appear in the school gallery.</p>
+                
+                <div class="card">
+                    <div class="card-title">Upload Photo</div>
+                    <div class="form-group">
+                        <label>Photo <span class="required">*</span></label>
+                        <input type="file" id="gallery-photo-file" accept="image/*" style="padding: 8px;">
+                        <input type="hidden" id="gallery-image">
+                        <div class="upload-preview" id="gallery-photo-preview"></div>
+                    </div>
+                    <div class="form-group">
+                        <label>Alt Text <span class="required">*</span></label>
+                        <input type="text" id="gallery-alt" placeholder="e.g. Students doing morning exercises">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Category</label>
+                            <select id="gallery-category">
+                                <option value="Classroom">Classroom</option>
+                                <option value="Play">Play</option>
+                                <option value="Events" selected>Events</option>
+                                <option value="Outdoor">Outdoor</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Caption</label>
+                            <input type="text" id="gallery-caption" placeholder="e.g. Morning Exercises">
+                        </div>
+                    </div>
+                    <div class="actions">
+                        <button class="btn btn-primary" onclick="addGalleryImage()">
+                            <i class="fas fa-upload"></i> Upload to Gallery
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-title">Gallery Photos</div>
+                    <div class="item-list" id="gallery-list">
+                        <p style="color: #6b7280; text-align: center; padding: 24px;">Loading...</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Events Section -->
+            <section class="admin-section" id="section-events">
+                <h2 class="section-title">Term Dates & Events</h2>
+                <p class="section-desc">Update term dates and add key school events.</p>
+                
+                <div class="card">
+                    <div class="card-title">Term Dates</div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Term 1 Start</label>
+                            <input type="text" id="event-term1_start" placeholder="e.g. January 2026">
+                        </div>
+                        <div class="form-group">
+                            <label>Term 1 End</label>
+                            <input type="text" id="event-term1_end" placeholder="e.g. April 2026">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Term 2 Start</label>
+                            <input type="text" id="event-term2_start" placeholder="e.g. May 2026">
+                        </div>
+                        <div class="form-group">
+                            <label>Term 2 End</label>
+                            <input type="text" id="event-term2_end" placeholder="e.g. August 2026">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Term 3 Start</label>
+                            <input type="text" id="event-term3_start" placeholder="e.g. September 2026">
+                        </div>
+                        <div class="form-group">
+                            <label>Term 3 End</label>
+                            <input type="text" id="event-term3_end" placeholder="e.g. November 2026">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Open Day</label>
+                            <input type="text" id="event-open_day" placeholder="e.g. Saturday, 10:00 AM – 1:00 PM">
+                        </div>
+                        <div class="form-group">
+                            <label>Registration Period</label>
+                            <input type="text" id="event-registration" placeholder="e.g. Ongoing">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-title">Key Events</div>
+                    <div id="events-list" class="item-list">
+                        <p style="color: #6b7280; text-align: center; padding: 24px;">Loading...</p>
+                    </div>
+                    <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid #e5e7eb;">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Event Date</label>
+                                <input type="date" id="new-event-date">
+                            </div>
+                            <div class="form-group">
+                                <label>Event Title</label>
+                                <input type="text" id="new-event-title" placeholder="e.g. Term 1 Open Day">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <input type="text" id="new-event-description" placeholder="Short description...">
+                        </div>
+                        <button class="btn btn-primary btn-sm" onclick="addEvent()">
+                            <i class="fas fa-plus"></i> Add Event
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="actions">
+                    <button class="btn btn-primary" onclick="saveEvents()">
+                        <i class="fas fa-save"></i> Save All Changes
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <div class="toast" id="toast"></div>
+
+    <script>
+        // State
+        let currentSection = 'settings';
+        let teamData = [];
+        let newsData = [];
+        let galleryData = [];
+        let eventsData = {};
+        
+        // Navigation
+        document.querySelectorAll('.admin-sidebar-nav button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const section = btn.dataset.section;
+                showSection(section);
+            });
+        });
+        
+        function showSection(section) {
+            currentSection = section;
+            document.querySelectorAll('.admin-sidebar-nav button').forEach(b => b.classList.remove('active'));
+            document.querySelector(`.admin-sidebar-nav button[data-section="${section}"]`)?.classList.add('active');
+            document.querySelectorAll('.admin-section').forEach(s => s.classList.remove('active'));
+            document.getElementById(`section-${section}`)?.classList.add('active');
+        }
+        
+        // Logout
+        document.getElementById('logout-btn').addEventListener('click', async (e) => {
+            e.preventDefault();
+            await fetch('/api/auth', { method: 'DELETE' });
+            window.location.href = '/admin/';
+        });
+        
+        // Toast notifications
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = `toast ${type} show`;
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+        
+        // Image upload helper
+        async function uploadImage(file) {
+            const formData = new FormData();
+            formData.append('file', file);
+            
+            const res = await fetch('/api/upload', {
+                method: 'POST',
+                body: formData
+            });
+            
+            const data = await res.json();
+            if (data.url) return data.url;
+            throw new Error(data.error || 'Upload failed');
+        }
+        
+        // Setup file input previews
+        function setupFilePreview(inputId, previewId, hiddenInputId) {
+            const input = document.getElementById(inputId);
+            const preview = document.getElementById(previewId);
+            const hidden = document.getElementById(hiddenInputId);
+            
+            if (!input) return;
+            
+            input.addEventListener('change', async () => {
+                const file = input.files[0];
+                if (!file) return;
+                
+                try {
+                    const url = await uploadImage(file);
+                    hidden.value = url;
+                    preview.innerHTML = `<img src="${url}" alt="Preview">`;
+                    preview.classList.add('visible');
+                } catch {
+                    showToast('Image upload failed. Please try again.', 'error');
+                }
+            });
+        }
+        
+        // API helpers
+        async function apiFetch(url, options = {}) {
+            const res = await fetch(url, {
+                ...options,
+                headers: {
+                    'Content-Type': 'application/json',
+                    ...options.headers
+                }
+            });
+            const data = await res.json();
+            if (!res.ok) throw new Error(data.error || 'Request failed');
+            return data;
+        }
+        
+        // Load all data
+        async function loadAllData() {
+            try {
+                const [settings, team, news, gallery, events] = await Promise.all([
+                    apiFetch('/api/content/settings'),
+                    apiFetch('/api/content/team'),
+                    apiFetch('/api/content/news'),
+                    apiFetch('/api/content/gallery'),
+                    apiFetch('/api/content/events')
+                ]);
+                
+                loadSettings(settings);
+                teamData = team || [];
+                renderTeam();
+                newsData = news || [];
+                renderNews();
+                galleryData = gallery || [];
+                renderGallery();
+                eventsData = events || {};
+                renderEvents();
+            } catch {
+                showToast('Could not load data. Please refresh.', 'error');
+            }
+        }
+        
+        // Settings
+        function loadSettings(data) {
+            if (!data) return;
+            document.getElementById('setting-hero_badge').value = data.hero_badge || '';
+            document.getElementById('setting-hero_title').value = data.hero_title || '';
+            document.getElementById('setting-hero_subtitle').value = data.hero_subtitle || '';
+            document.getElementById('setting-cta_text').value = data.cta_text || '';
+            document.getElementById('setting-phone').value = data.phone || '';
+            document.getElementById('setting-email').value = data.email || '';
+            document.getElementById('setting-whatsapp_link').value = data.whatsapp_link || '';
+        }
+        
+        async function saveSettings() {
+            const data = {
+                hero_badge: document.getElementById('setting-hero_badge').value,
+                hero_title: document.getElementById('setting-hero_title').value,
+                hero_subtitle: document.getElementById('setting-hero_subtitle').value,
+                cta_text: document.getElementById('setting-cta_text').value,
+                phone: document.getElementById('setting-phone').value,
+                email: document.getElementById('setting-email').value,
+                whatsapp_link: document.getElementById('setting-whatsapp_link').value,
+            };
+            
+            try {
+                await apiFetch('/api/content/settings', {
+                    method: 'POST',
+                    body: JSON.stringify(data)
+                });
+                showToast('Homepage settings saved!');
+            } catch {
+                showToast('Failed to save. Please try again.', 'error');
+            }
+        }
+        
+        // Team
+        function renderTeam() {
+            const container = document.getElementById('team-list');
+            if (!teamData.length) {
+                container.innerHTML = '<p style="color: #6b7280; text-align: center; padding: 24px;">No team members yet. Add your first one above.</p>';
+                return;
+            }
+            container.innerHTML = teamData.map((member, index) => `
+                <div class="item-row">
+                    ${member.photo ? `<img src="${member.photo}" alt="${member.name}">` : '<div style="width:64px;height:64px;background:#faf8f5;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#6b7280;"><i class="fas fa-user"></i></div>'}
+                    <div class="item-info">
+                        <div class="item-title">${member.name}</div>
+                        <div class="item-meta">${member.role} ${member.years ? '· ' + member.years : ''}</div>
+                    </div>
+                    <div class="item-actions">
+                        <button class="btn btn-danger btn-sm" onclick="deleteTeamMember(${index})">
+                            <i class="fas fa-trash"></i> Remove
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        async function addTeamMember() {
+            const name = document.getElementById('team-name').value.trim();
+            const role = document.getElementById('team-role').value.trim();
+            const bio = document.getElementById('team-bio').value.trim();
+            const years = document.getElementById('team-years').value.trim();
+            const photo = document.getElementById('team-photo').value;
+            
+            if (!name || !role) {
+                showToast('Please enter a name and role.', 'error');
+                return;
+            }
+            
+            const member = { name, role, bio, years, photo };
+            if (photo) member.photo = photo;
+            
+            teamData.push(member);
+            await saveTeam();
+            
+            document.getElementById('team-name').value = '';
+            document.getElementById('team-role').value = '';
+            document.getElementById('team-bio').value = '';
+            document.getElementById('team-years').value = '';
+            document.getElementById('team-photo').value = '';
+            document.getElementById('team-photo-preview').classList.remove('visible');
+            
+            renderTeam();
+            showToast('Team member added!');
+        }
+        
+        function deleteTeamMember(index) {
+            if (confirm('Remove this team member?')) {
+                teamData.splice(index, 1);
+                saveTeam().then(() => renderTeam());
+            }
+        }
+        
+        async function saveTeam() {
+            try {
+                await apiFetch('/api/content/team', {
+                    method: 'POST',
+                    body: JSON.stringify(teamData)
+                });
+            } catch {
+                showToast('Failed to save team data.', 'error');
+                throw new Error('Save failed');
+            }
+        }
+        
+        // News
+        function renderNews() {
+            const container = document.getElementById('news-list');
+            if (!newsData.length) {
+                container.innerHTML = '<p style="color: #6b7280; text-align: center; padding: 24px;">No news posts yet.</p>';
+                return;
+            }
+            const sorted = [...newsData].sort((a, b) => new Date(b.date) - new Date(a.date));
+            container.innerHTML = sorted.map((post, i) => {
+                const index = newsData.indexOf(post);
+                return `
+                <div class="item-row">
+                    ${post.image ? `<img src="${post.image}" alt="${post.title}">` : ''}
+                    <div class="item-info">
+                        <div class="item-title">${post.title}</div>
+                        <div class="item-meta">${post.date} · ${post.excerpt ? post.excerpt.substring(0, 80) + '...' : 'No excerpt'}</div>
+                    </div>
+                    <div class="item-actions">
+                        <button class="btn btn-danger btn-sm" onclick="deleteNewsPost(${index})">
+                            <i class="fas fa-trash"></i> Delete
+                        </button>
+                    </div>
+                </div>
+            `}).join('');
+        }
+        
+        async function addNewsPost() {
+            const title = document.getElementById('news-title').value.trim();
+            const date = document.getElementById('news-date').value;
+            const image = document.getElementById('news-image').value;
+            const excerpt = document.getElementById('news-excerpt').value.trim();
+            const body = document.getElementById('news-body').value.trim();
+            
+            if (!title || !date) {
+                showToast('Please enter a title and date.', 'error');
+                return;
+            }
+            
+            const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+            
+            newsData.push({ title, date, image, excerpt, body, slug });
+            await saveNews();
+            
+            document.getElementById('news-title').value = '';
+            document.getElementById('news-date').value = '';
+            document.getElementById('news-image').value = '';
+            document.getElementById('news-excerpt').value = '';
+            document.getElementById('news-body').value = '';
+            document.getElementById('news-image-preview').classList.remove('visible');
+            
+            renderNews();
+            showToast('News post published!');
+        }
+        
+        function deleteNewsPost(index) {
+            if (confirm('Delete this news post?')) {
+                newsData.splice(index, 1);
+                saveNews().then(() => renderNews());
+            }
+        }
+        
+        async function saveNews() {
+            try {
+                await apiFetch('/api/content/news', {
+                    method: 'POST',
+                    body: JSON.stringify(newsData)
+                });
+            } catch {
+                showToast('Failed to save news.', 'error');
+                throw new Error('Save failed');
+            }
+        }
+        
+        // Gallery
+        function renderGallery() {
+            const container = document.getElementById('gallery-list');
+            if (!galleryData.length) {
+                container.innerHTML = '<p style="color: #6b7280; text-align: center; padding: 24px;">No gallery photos yet.</p>';
+                return;
+            }
+            container.innerHTML = galleryData.map((item, index) => `
+                <div class="item-row">
+                    <img src="${item.image}" alt="${item.alt}">
+                    <div class="item-info">
+                        <div class="item-title">${item.caption || item.alt}</div>
+                        <div class="item-meta">${item.category}</div>
+                    </div>
+                    <div class="item-actions">
+                        <button class="btn btn-danger btn-sm" onclick="deleteGalleryImage(${index})">
+                            <i class="fas fa-trash"></i> Remove
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        async function addGalleryImage() {
+            const image = document.getElementById('gallery-image').value;
+            const alt = document.getElementById('gallery-alt').value.trim();
+            const category = document.getElementById('gallery-category').value;
+            const caption = document.getElementById('gallery-caption').value.trim();
+            
+            if (!image || !alt) {
+                showToast('Please upload an image and add alt text.', 'error');
+                return;
+            }
+            
+            galleryData.push({ image, alt, category, caption });
+            await saveGallery();
+            
+            document.getElementById('gallery-image').value = '';
+            document.getElementById('gallery-alt').value = '';
+            document.getElementById('gallery-caption').value = '';
+            document.getElementById('gallery-photo-preview').classList.remove('visible');
+            
+            renderGallery();
+            showToast('Photo added to gallery!');
+        }
+        
+        function deleteGalleryImage(index) {
+            if (confirm('Remove this photo from the gallery?')) {
+                galleryData.splice(index, 1);
+                saveGallery().then(() => renderGallery());
+            }
+        }
+        
+        async function saveGallery() {
+            try {
+                await apiFetch('/api/content/gallery', {
+                    method: 'POST',
+                    body: JSON.stringify(galleryData)
+                });
+            } catch {
+                showToast('Failed to save gallery.', 'error');
+                throw new Error('Save failed');
+            }
+        }
+        
+        // Events
+        function renderEvents() {
+            const container = document.getElementById('events-list');
+            if (!eventsData.events || !eventsData.events.length) {
+                container.innerHTML = '<p style="color: #6b7280; text-align: center; padding: 24px;">No events scheduled yet.</p>';
+                return;
+            }
+            container.innerHTML = eventsData.events.map((ev, index) => `
+                <div class="item-row">
+                    <div class="item-info">
+                        <div class="item-title">${ev.title}</div>
+                        <div class="item-meta">${ev.date} · ${ev.description}</div>
+                    </div>
+                    <div class="item-actions">
+                        <button class="btn btn-danger btn-sm" onclick="deleteEvent(${index})">
+                            <i class="fas fa-trash"></i> Remove
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+            
+            // Fill term date inputs
+            if (eventsData.term1_start) document.getElementById('event-term1_start').value = eventsData.term1_start;
+            if (eventsData.term1_end) document.getElementById('event-term1_end').value = eventsData.term1_end;
+            if (eventsData.term2_start) document.getElementById('event-term2_start').value = eventsData.term2_start;
+            if (eventsData.term2_end) document.getElementById('event-term2_end').value = eventsData.term2_end;
+            if (eventsData.term3_start) document.getElementById('event-term3_start').value = eventsData.term3_start;
+            if (eventsData.term3_end) document.getElementById('event-term3_end').value = eventsData.term3_end;
+            if (eventsData.open_day) document.getElementById('event-open_day').value = eventsData.open_day;
+            if (eventsData.registration) document.getElementById('event-registration').value = eventsData.registration;
+        }
+        
+        async function addEvent() {
+            const date = document.getElementById('new-event-date').value;
+            const title = document.getElementById('new-event-title').value.trim();
+            const description = document.getElementById('new-event-description').value.trim();
+            
+            if (!date || !title) {
+                showToast('Please enter a date and title for the event.', 'error');
+                return;
+            }
+            
+            if (!eventsData.events) eventsData.events = [];
+            eventsData.events.push({ date, title, description });
+            await saveEvents();
+            
+            document.getElementById('new-event-date').value = '';
+            document.getElementById('new-event-title').value = '';
+            document.getElementById('new-event-description').value = '';
+            
+            renderEvents();
+            showToast('Event added!');
+        }
+        
+        function deleteEvent(index) {
+            if (confirm('Remove this event?')) {
+                eventsData.events.splice(index, 1);
+                saveEvents().then(() => renderEvents());
+            }
+        }
+        
+        async function saveEvents() {
+            const data = {
+                term1_start: document.getElementById('event-term1_start').value,
+                term1_end: document.getElementById('event-term1_end').value,
+                term2_start: document.getElementById('event-term2_start').value,
+                term2_end: document.getElementById('event-term2_end').value,
+                term3_start: document.getElementById('event-term3_start').value,
+                term3_end: document.getElementById('event-term3_end').value,
+                open_day: document.getElementById('event-open_day').value,
+                registration: document.getElementById('event-registration').value,
+                events: eventsData.events || []
+            };
+            
+            try {
+                await apiFetch('/api/content/events', {
+                    method: 'POST',
+                    body: JSON.stringify(data)
+                });
+                eventsData = data;
+                showToast('Term dates and events saved!');
+            } catch {
+                showToast('Failed to save events.', 'error');
+            }
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            setupFilePreview('team-photo-file', 'team-photo-preview', 'team-photo');
+            setupFilePreview('news-image-file', 'news-image-preview', 'news-image');
+            setupFilePreview('gallery-photo-file', 'gallery-photo-preview', 'gallery-image');
+            loadAllData();
+        });
+    </script>
+</body>
+</html>

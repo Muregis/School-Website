@@ -156,28 +156,32 @@
     <script src="js/script.js"></script>
     <script>
     async function loadTeam() {
+        let team = null;
         try {
-            const res = await fetch('content/team/_index.json');
-            if (!res.ok) return;
-            const team = await res.json();
-            const grid = document.getElementById('team-grid');
-            if (!grid) return;
-            grid.innerHTML = team.map(member => `
-                <div class="team-card">
-                    <div class="team-photo">
-                        <img src="${member.photo}" alt="${member.name}" loading="lazy" onerror="this.style.display='none'">
-                    </div>
-                    <div class="team-info">
-                        <h3>${member.name}</h3>
-                        <p class="team-role">${member.role}</p>
-                        <p class="team-bio">${member.bio}</p>
-                        ${member.years ? `<p class="team-years"><i class="fas fa-clock"></i> ${member.years}</p>` : ''}
-                    </div>
-                </div>
-            `).join('');
-        } catch (e) {
-            console.warn('Could not load team data');
+            const res = await fetch('/api/content/team');
+            if (res.ok) team = await res.json();
+        } catch {}
+        if (!team) {
+            try {
+                const res = await fetch('content/team/_index.json');
+                if (res.ok) team = await res.json();
+            } catch {}
         }
+        const grid = document.getElementById('team-grid');
+        if (!grid || !team) return;
+        grid.innerHTML = team.map(member => `
+            <div class="team-card">
+                <div class="team-photo">
+                    <img src="${member.photo}" alt="${member.name}" loading="lazy" onerror="this.style.display='none'">
+                </div>
+                <div class="team-info">
+                    <h3>${member.name}</h3>
+                    <p class="team-role">${member.role}</p>
+                    <p class="team-bio">${member.bio}</p>
+                    ${member.years ? `<p class="team-years"><i class="fas fa-clock"></i> ${member.years}</p>` : ''}
+                </div>
+            </div>
+        `).join('');
     }
     loadTeam();
     </script>

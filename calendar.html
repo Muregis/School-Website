@@ -125,42 +125,46 @@
     <script src="js/script.js"></script>
     <script>
     async function loadCalendar() {
+        let data = null;
         try {
-            const res = await fetch('content/events/term-dates.json');
-            if (!res.ok) return;
-            const data = await res.json();
-            const grid = document.getElementById('calendar-grid');
-            if (!grid) return;
-            let html = `
-                <div class="terms-card">
-                    <h3>Term Dates</h3>
-                    <div class="term-row"><span>Term 1</span><span>${data.term1_start} — ${data.term1_end}</span></div>
-                    <div class="term-row"><span>Term 2</span><span>${data.term2_start} — ${data.term2_end}</span></div>
-                    <div class="term-row"><span>Term 3</span><span>${data.term3_start} — ${data.term3_end}</span></div>
-                </div>
-                <div class="events-card">
-                    <h3>Key Events</h3>
-                    ${data.events.map(ev => `
-                        <div class="event-row">
-                            <time>${ev.date}</time>
-                            <div>
-                                <strong>${ev.title}</strong>
-                                <p>${ev.description}</p>
-                            </div>
-                        </div>
-                    `).join('')}
-                </div>
-                <div class="info-card">
-                    <h3>Admissions</h3>
-                    <p><strong>Open Day:</strong> ${data.open_day}</p>
-                    <p><strong>Registration:</strong> ${data.registration}</p>
-                    <p style="margin-top: 16px;"><a href="index.html#contact" class="btn btn-primary">Book a Visit</a></p>
-                </div>
-            `;
-            grid.innerHTML = html;
-        } catch (e) {
-            console.warn('Could not load calendar data');
+            const res = await fetch('/api/content/events');
+            if (res.ok) data = await res.json();
+        } catch {}
+        if (!data) {
+            try {
+                const res = await fetch('content/events/term-dates.json');
+                if (res.ok) data = await res.json();
+            } catch {}
         }
+        const grid = document.getElementById('calendar-grid');
+        if (!grid || !data) return;
+        let html = `
+            <div class="terms-card">
+                <h3>Term Dates</h3>
+                <div class="term-row"><span>Term 1</span><span>${data.term1_start} — ${data.term1_end}</span></div>
+                <div class="term-row"><span>Term 2</span><span>${data.term2_start} — ${data.term2_end}</span></div>
+                <div class="term-row"><span>Term 3</span><span>${data.term3_start} — ${data.term3_end}</span></div>
+            </div>
+            <div class="events-card">
+                <h3>Key Events</h3>
+                ${data.events.map(ev => `
+                    <div class="event-row">
+                        <time>${ev.date}</time>
+                        <div>
+                            <strong>${ev.title}</strong>
+                            <p>${ev.description}</p>
+                        </div>
+                    </div>
+                `).join('')}
+            </div>
+            <div class="info-card">
+                <h3>Admissions</h3>
+                <p><strong>Open Day:</strong> ${data.open_day}</p>
+                <p><strong>Registration:</strong> ${data.registration}</p>
+                <p style="margin-top: 16px;"><a href="index.html#contact" class="btn btn-primary">Book a Visit</a></p>
+            </div>
+        `;
+        grid.innerHTML = html;
     }
     loadCalendar();
     </script>

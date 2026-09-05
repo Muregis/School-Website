@@ -1,76 +1,204 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="robots" content="noindex" />
-    <title>Content Manager — Gracious Love Academy</title>
-
-    <script src="https://unpkg.com/decap-cms@^3.1.10/dist/decap-cms.js"></script>
-  </head>
-  <body>
-    <script>
-      window.CMS_MANUAL_INIT = true;
-
-      CMS.init({
-        config: {
-          load_config_file: false,
-          backend: {
-            name: "github",
-            repo: "muregis/School-Website",
-            branch: "main",
-            base_url: "https://api.netlify.com",
-            auth_endpoint: "auth"
-          },
-          media_folder: "images/uploads",
-          public_folder: "/images/uploads",
-          collections: [
-            // We will load the full config from the YAML file instead
-          ]
-        }
-      });
-    </script>
-
-    <!-- Load the actual config.yml -->
-    <script>
-      fetch('/admin/config.yml')
-        .then(response => response.text())
-        .then(yaml => {
-          // This forces Decap to use the correct config file
-          CMS.registerConfig(yaml);
-        });
-    </script>
-  </body>
-</html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Content Manager — Gracious Love Academy</title>
+    <title>Admin Login — Gracious Love Academy</title>
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" />
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', -apple-system, sans-serif; background: #f5f5f5; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
-        .login-box { background: white; padding: 48px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); max-width: 400px; width: 90%; text-align: center; }
-        .login-box img { width: 64px; height: 64px; margin-bottom: 24px; }
-        .login-box h1 { font-size: 1.5rem; color: #1a2744; margin-bottom: 8px; }
-        .login-box p { color: #6b7280; font-size: 0.9375rem; margin-bottom: 32px; }
-        .login-box a { display: inline-block; background: #c4704b; color: white; padding: 14px 28px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; }
-        .login-box a:hover { background: #a35d3a; transform: translateY(-2px); }
-        .login-box .note { margin-top: 24px; font-size: 0.8125rem; color: #6b7280; line-height: 1.6; }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: #faf8f5;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+        .login-card {
+            background: white;
+            padding: 48px;
+            border-radius: 16px;
+            box-shadow: 0 12px 40px rgba(26, 39, 68, 0.08);
+            max-width: 420px;
+            width: 100%;
+            text-align: center;
+            border: 1px solid #e5e7eb;
+        }
+        .login-logo {
+            width: 72px;
+            height: 72px;
+            margin: 0 auto 24px;
+            background: #1a2744;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+        }
+        .login-card h1 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #1a2744;
+            margin-bottom: 8px;
+        }
+        .login-card p {
+            color: #6b7280;
+            font-size: 0.9375rem;
+            margin-bottom: 32px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .form-group label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #1a2744;
+            margin-bottom: 8px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.2s;
+            outline: none;
+        }
+        .form-group input:focus {
+            border-color: #c4704b;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: inherit;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+            width: 100%;
+        }
+        .btn-primary {
+            background: #c4704b;
+            color: white;
+        }
+        .btn-primary:hover {
+            background: #a35d3a;
+            transform: translateY(-1px);
+        }
+        .btn-primary:disabled {
+            background: #a35d3a;
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .error-msg {
+            background: #fef2f2;
+            color: #b91c1c;
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            margin-bottom: 20px;
+            display: none;
+            border: 1px solid #fecaca;
+        }
+        .error-msg.visible {
+            display: block;
+        }
+        .login-footer {
+            margin-top: 32px;
+            font-size: 0.8125rem;
+            color: #6b7280;
+            line-height: 1.6;
+        }
+        .login-footer a {
+            color: #c4704b;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .login-footer a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
-    <div class="login-box">
-        <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <polygon points="32,8 56,24 32,40 8,24" fill="#1a2744"/>
-            <rect x="14" y="24" width="36" height="4" rx="2" fill="#c4704b"/>
-        </svg>
+    <div class="login-card">
+        <div class="login-logo">
+            <i class="fas fa-graduation-cap"></i>
+        </div>
         <h1>Gracious Love Academy</h1>
-        <p>Content Management System</p>
-        <a href="https://github.com/login/oauth/authorize?client_id=Ov23liedwM3YUNsLM0sZ&redirect_uri=https://graciousloveacademy-school-website.vercel.app/admin/&scope=repo">Sign in with GitHub</a>
-        <p class="note">You need a GitHub account with access to this repository.<br>Contact the school administrator if you need access.</p>
+        <p>School Admin Portal</p>
+        
+        <div class="error-msg" id="error-msg"></div>
+        
+        <form id="login-form">
+            <div class="form-group">
+                <label for="password">Admin Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required autofocus>
+            </div>
+            <button type="submit" class="btn btn-primary" id="login-btn">
+                <span id="btn-text">Log In</span>
+            </button>
+        </form>
+        
+        <div class="login-footer">
+            <p>Private area for school administrators only.<br>Contact the web developer if you need access.</p>
+        </div>
     </div>
-    <script src="https://decap-cms.netlify.app/dist/cms.js"></script>
+
+    <script>
+        const form = document.getElementById('login-form');
+        const errorMsg = document.getElementById('error-msg');
+        const loginBtn = document.getElementById('login-btn');
+        const btnText = document.getElementById('btn-text');
+        
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            errorMsg.classList.remove('visible');
+            
+            const password = document.getElementById('password').value;
+            
+            loginBtn.disabled = true;
+            btnText.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Checking...';
+            
+            try {
+                const res = await fetch('/api/auth', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ password })
+                });
+                
+                const data = await res.json();
+                
+                if (data.success) {
+                    window.location.href = '/admin/app.html';
+                } else {
+                    errorMsg.textContent = 'Incorrect password. Please try again.';
+                    errorMsg.classList.add('visible');
+                    loginBtn.disabled = false;
+                    btnText.textContent = 'Log In';
+                }
+            } catch {
+                errorMsg.textContent = 'Something went wrong. Please try again.';
+                errorMsg.classList.add('visible');
+                loginBtn.disabled = false;
+                btnText.textContent = 'Log In';
+            }
+        });
+    </script>
 </body>
 </html>
