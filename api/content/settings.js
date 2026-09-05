@@ -12,16 +12,8 @@ export default async function handler(request, response) {
     return response.end();
   }
   
-  const authError = await checkAuth(request);
-  if (!authError && request.method !== 'GET') {
-    response.status = 401;
-    response.setHeader('Content-Type', 'application/json');
-    return response.end(JSON.stringify({ error: 'Unauthorized' }));
-  }
-  
-  const data = await getContent('content:settings', 'content/settings.json');
-  
   if (request.method === 'GET') {
+    const data = await getContent('content:settings', 'content/settings.json');
     response.status = 200;
     response.setHeader('Content-Type', 'application/json');
     response.setHeader(cors['Access-Control-Allow-Origin'], cors['Access-Control-Allow-Origin']);
@@ -29,6 +21,13 @@ export default async function handler(request, response) {
   }
   
   if (request.method === 'POST') {
+    const authorized = await checkAuth(request);
+    if (!authorized) {
+      response.status = 401;
+      response.setHeader('Content-Type', 'application/json');
+      return response.end(JSON.stringify({ error: 'Unauthorized' }));
+    }
+    
     try {
       const body = await request.json();
       const success = await setContent('content:settings', body);

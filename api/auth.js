@@ -1,5 +1,5 @@
 import { kv } from '@vercel/kv';
-import { checkAuth, corsHeaders } from '../_utils.js';
+import { checkAuth, getCookie, corsHeaders } from '../_utils.js';
 
 export default async function handler(request, response) {
   const cors = corsHeaders();
@@ -48,7 +48,7 @@ export default async function handler(request, response) {
   }
   
   if (request.method === 'DELETE') {
-    const sessionId = request.cookies.get('admin_session')?.value;
+    const sessionId = getCookie(request, 'admin_session');
     if (sessionId) {
       await kv.del(`session:${sessionId}`);
     }

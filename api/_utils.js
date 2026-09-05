@@ -1,7 +1,17 @@
 import { kv } from '@vercel/kv';
 
+function getCookie(request, name) {
+  const cookieHeader = request.headers.get('cookie');
+  if (!cookieHeader) return null;
+  const cookies = cookieHeader.split(';').map(c => c.trim().split('='));
+  for (const [key, value] of cookies) {
+    if (key === name) return decodeURIComponent(value);
+  }
+  return null;
+}
+
 export async function checkAuth(request) {
-  const sessionId = request.cookies.get('admin_session')?.value;
+  const sessionId = getCookie(request, 'admin_session');
   if (!sessionId) return false;
   
   try {
