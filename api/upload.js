@@ -27,12 +27,8 @@ export default async function handler(request, response) {
         return response.end(JSON.stringify({ error: 'Cloudinary not configured on server' }));
       }
       
-      const bytes = await file.arrayBuffer();
-      const buffer = Buffer.from(bytes);
-      
-      const FormData = (await import('form-data')).default;
       const cloudinaryForm = new FormData();
-      cloudinaryForm.append('file', buffer, { filename: file.name, contentType: file.type });
+      cloudinaryForm.append('file', file);
       cloudinaryForm.append('upload_preset', uploadPreset);
       
       const cloudinaryRes = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
