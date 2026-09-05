@@ -8,7 +8,6 @@ if (hamburger && navMenu) {
         hamburger.classList.toggle('active');
     });
 
-    // Close mobile menu when clicking on a link
     document.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', () => {
             navMenu.classList.remove('active');
@@ -39,7 +38,7 @@ function scrollActive() {
         const sectionHeight = current.offsetHeight;
         const sectionTop = current.offsetTop - 100;
         const sectionId = current.getAttribute('id');
-        const navLink = document.querySelector('.nav-link[href*=' + sectionId + ']');
+        const navLink = document.querySelector('.nav-link[href="#' + sectionId + '"]');
 
         if (navLink) {
             if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
@@ -68,26 +67,21 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // ===== CONTACT FORM HANDLING =====
+const contactForm = document.getElementById('contact-form');
+
 if (contactForm) {
-    // Store original button text
     const submitBtn = contactForm.querySelector('button[type="submit"]');
-    const originalBtnHTML = submitBtn ? submitBtn.innerHTML : '';
     
     contactForm.addEventListener('submit', function(e) {
-        // Don't prevent default - let FormSubmit handle it
-        // Just add loading state
-        
         if (submitBtn) {
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
             submitBtn.disabled = true;
         }
         
-        // Optional: Store form data in localStorage before submission
-        // (In case user wants to come back)
         const formData = new FormData(contactForm);
         const data = {};
         formData.forEach((value, key) => {
-            if (!key.startsWith('_')) { // Skip hidden fields
+            if (!key.startsWith('_')) {
                 data[key] = value;
             }
         });
@@ -96,17 +90,10 @@ if (contactForm) {
 }
 
 // ===== RESET FORM ON THANK YOU PAGE RETURN =====
-// Check if user just came back from thank you page
 window.addEventListener('load', function() {
-    // If there's a form submission in storage and we're on the main page
     if (localStorage.getItem('lastFormSubmission') && contactForm) {
-        // Clear the stored submission
         localStorage.removeItem('lastFormSubmission');
-        
-        // Reset form
         contactForm.reset();
-        
-        // Show success message
         showFormSuccess();
     }
 });
@@ -116,7 +103,6 @@ function showFormSuccess() {
     const formContainer = document.querySelector('.contact-form');
     if (!formContainer) return;
     
-    // Create success message
     const successMessage = document.createElement('div');
     successMessage.className = 'form-success-message';
     successMessage.innerHTML = `
@@ -127,63 +113,18 @@ function showFormSuccess() {
         </div>
     `;
     
-    // Insert before form
     formContainer.insertBefore(successMessage, formContainer.firstChild);
-    
-    // Scroll to success message
     successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
     
-    // Remove after 8 seconds
     setTimeout(() => {
         successMessage.style.animation = 'fadeOut 0.5s ease';
         setTimeout(() => successMessage.remove(), 500);
     }, 8000);
 }
 
-// ===== ANIMATED STATISTICS COUNTER =====
-function animateCounter(element, target, duration) {
-    let start = 0;
-    const increment = target / (duration / 16); // 60 FPS
-    
-    const timer = setInterval(() => {
-        start += increment;
-        if (start >= target) {
-            element.textContent = target;
-            clearInterval(timer);
-        } else {
-            element.textContent = Math.floor(start);
-        }
-    }, 16);
-}
-
-// Trigger counter animation when stats are in viewport
-const statNumbers = document.querySelectorAll('.stat-number');
-let countersAnimated = false;
-
-function checkStatsInView() {
-    if (countersAnimated) return;
-    
-    statNumbers.forEach(stat => {
-        const rect = stat.getBoundingClientRect();
-        if (rect.top < window.innerHeight && rect.bottom > 0) {
-            const text = stat.textContent;
-            const number = parseInt(text.replace(/[^0-9]/g, ''));
-            
-            if (!isNaN(number)) {
-                stat.textContent = '0';
-                animateCounter(stat, number, 2000);
-                countersAnimated = true;
-            }
-        }
-    });
-}
-
-window.addEventListener('scroll', checkStatsInView);
-window.addEventListener('load', checkStatsInView);
-
 // ===== SCROLL REVEAL ANIMATION =====
 function revealOnScroll() {
-    const reveals = document.querySelectorAll('.program-card, .feature-box, .testimonial-card, .gallery-item, .news-card, .fee-card, .stat-card');
+    const reveals = document.querySelectorAll('.program-card, .feature-box, .testimonial-card, .gallery-item');
     
     reveals.forEach(element => {
         const windowHeight = window.innerHeight;
@@ -197,9 +138,8 @@ function revealOnScroll() {
     });
 }
 
-// Initialize scroll reveal styles
 document.addEventListener('DOMContentLoaded', function() {
-    const revealElements = document.querySelectorAll('.program-card, .feature-box, .testimonial-card, .gallery-item, .news-card, .fee-card, .stat-card');
+    const revealElements = document.querySelectorAll('.program-card, .feature-box, .testimonial-card, .gallery-item');
     
     revealElements.forEach(element => {
         element.style.opacity = '0';
@@ -219,7 +159,6 @@ galleryItems.forEach(item => {
         const img = item.querySelector('img');
         if (!img) return;
         
-        // Create lightbox
         const lightbox = document.createElement('div');
         lightbox.id = 'lightbox';
         lightbox.style.cssText = `
@@ -237,7 +176,6 @@ galleryItems.forEach(item => {
             animation: fadeIn 0.3s ease;
         `;
         
-        // Create image
         const lightboxImg = document.createElement('img');
         lightboxImg.src = img.src;
         lightboxImg.style.cssText = `
@@ -249,7 +187,6 @@ galleryItems.forEach(item => {
             animation: zoomIn 0.3s ease;
         `;
         
-        // Create close button
         const closeBtn = document.createElement('button');
         closeBtn.innerHTML = '<i class="fas fa-times"></i>';
         closeBtn.style.cssText = `
@@ -282,10 +219,8 @@ galleryItems.forEach(item => {
         lightbox.appendChild(closeBtn);
         document.body.appendChild(lightbox);
         
-        // Prevent body scroll
         document.body.style.overflow = 'hidden';
         
-        // Close on click
         lightbox.addEventListener('click', (e) => {
             if (e.target === lightbox || e.target === closeBtn || e.target.parentElement === closeBtn) {
                 lightbox.style.animation = 'fadeOut 0.3s ease';
@@ -296,7 +231,6 @@ galleryItems.forEach(item => {
             }
         });
         
-        // Close on ESC key
         document.addEventListener('keydown', function escHandler(e) {
             if (e.key === 'Escape') {
                 lightbox.remove();
@@ -328,6 +262,7 @@ formInputs.forEach(input => {
 const backToTopButton = document.createElement('button');
 backToTopButton.innerHTML = '<i class="fas fa-arrow-up"></i>';
 backToTopButton.id = 'backToTop';
+backToTopButton.setAttribute('aria-label', 'Back to top');
 backToTopButton.style.cssText = `
     position: fixed;
     bottom: 100px;
@@ -383,7 +318,7 @@ window.addEventListener('load', () => {
     }, 100);
 });
 
-// ===== ADD ANIMATION KEYFRAMES TO DOCUMENT =====
+// ===== INJECT ANIMATION KEYFRAMES =====
 const style = document.createElement('style');
 style.textContent = `
     @keyframes fadeIn {
@@ -443,18 +378,3 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
-
-// ===== CONSOLE BRANDING =====
-console.log('%c🎓 School Website Template', 'color: #667eea; font-size: 20px; font-weight: bold;');
-console.log('%cDeveloped by Victor Muregi', 'color: #764ba2; font-size: 14px;');
-console.log('%cContact: i.am.muregi@gmail.com', 'color: #10b981; font-size: 12px;');
-
-// ===== WHATSAPP FLOAT BUTTON ANIMATION =====
-const whatsappBtn = document.querySelector('.whatsapp-float');
-if (whatsappBtn) {
-    window.addEventListener('scroll', () => {
-        if (window.pageYOffset > 500) {
-            whatsappBtn.style.animation = 'pulse 2s infinite';
-        }
-    });
-}

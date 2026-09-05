@@ -366,6 +366,19 @@ ul {
     box-shadow: 0 12px 35px rgba(255, 255, 255, 0.4);
 }
 
+.btn-outline {
+    background: transparent;
+    color: var(--white);
+    border: 2px solid var(--white);
+}
+
+.btn-outline:hover {
+    background: var(--white);
+    color: var(--primary-color);
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 12px 35px rgba(255, 255, 255, 0.4);
+}
+
 .scroll-indicator {
     position: absolute;
     bottom: 40px;

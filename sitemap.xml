@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- ✅ FIX: Removed anchor fragment URLs (#about, #gallery etc.) — Google ignores them in sitemaps -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://graciousloveacademy.netlify.app/</loc>
-    <lastmod>2026-03-10</lastmod>
+    <lastmod>2026-09-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://graciousloveacademy.netlify.app/thankyou.html</loc>
-    <lastmod>2026-03-10</lastmod>
+    <lastmod>2026-09-05</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
+  </url>
+  <url>
+    <loc>https://graciousloveacademy.netlify.app/404.html</loc>
+    <lastmod>2026-09-05</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.0</priority>
   </url>
 </urlset>

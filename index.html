@@ -17,25 +17,26 @@
 
     <link rel="canonical" href="https://graciousloveacademy.netlify.app/">
 
-    <link rel="icon" type="image/png" href="images/logo.png">
-    <link rel="apple-touch-icon" href="images/logo.png">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon.svg">
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://graciousloveacademy.netlify.app/">
     <meta property="og:title" content="Gracious Love Academy | Best CBC Primary School in Njomoko, Thika">
     <meta property="og:description" content="Quality CBC education from Play Group to Grade 6 in Njomoko, Thika. Affordable fees from KES 6,500/term. Enroll today!">
     <meta property="og:image" content="https://graciousloveacademy.netlify.app/images/hero-bg.jpeg">
+    <meta property="og:image:alt" content="Gracious Love Academy campus in Njomoko, Thika">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:site_name" content="Gracious Love Academy">
     <meta property="og:locale" content="en_KE">
-
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://graciousloveacademy.netlify.app/">
     <meta name="twitter:title" content="Gracious Love Academy | CBC Primary School Njomoko, Thika">
     <meta name="twitter:description" content="Quality CBC education from Play Group to Grade 6. Affordable fees from KES 6,500/term.">
     <meta name="twitter:image" content="https://graciousloveacademy.netlify.app/images/hero-bg.jpeg">
+    <meta name="twitter:image:alt" content="Gracious Love Academy campus in Njomoko, Thika">
 
     <meta name="geo.region" content="KE-110">
     <meta name="geo.placename" content="Thika, Kiambu County, Kenya">
@@ -65,8 +66,8 @@
                     <li><a href="#about" class="nav-link">About</a></li>
                     <li><a href="#programs" class="nav-link">Programs</a></li>
                     <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                    <li><a href="#fees" class="nav-link">Fee Structure</a></li>
                     <li><a href="#contact" class="nav-link">Contact</a></li>
-                    <!-- ✅ FIX: "Enroll Now" was href="#" — now points to #contact -->
                     <li><a href="#contact" class="btn-enroll">Enroll Now</a></li>
                 </ul>
                 <div class="hamburger" id="hamburger">
@@ -180,6 +181,7 @@
                     </div>
 
                     <a href="#contact" class="btn btn-primary">Schedule a Visit</a>
+                    <a href="#programs" class="btn btn-outline" style="margin-left: 10px;">Explore Programs</a>
                 </div>
             </div>
         </div>
@@ -415,15 +417,15 @@
             </div>
         </div>
 
-        <div class="fee-contact-info">
-            <div class="info-box-alt">
-                <i class="fas fa-info-circle"></i>
-                <div>
-                    <strong>Payment Plans Available</strong>
-                    <p>We offer flexible installment options. Contact us to discuss a plan that works for your family.</p>
+                <div class="fee-contact-info">
+                    <div class="info-box-alt">
+                        <i class="fas fa-info-circle"></i>
+                        <div>
+                            <strong>Payment Plans Available</strong>
+                            <p>We offer flexible installment options. <a href="#contact">Contact us</a> to discuss a plan that works for your family.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
     </div>
     </section>
 
@@ -504,7 +506,6 @@
                         <i class="fas fa-envelope"></i>
                         <div>
                             <h4>Email</h4>
-                            <!-- ✅ FIX: Removed duplicate typo email (graciousloveacdemy23) -->
                             <p><a href="mailto:graciousloveacademy23@gmail.com">graciousloveacademy23@gmail.com</a></p>
                         </div>
                     </div>
@@ -522,9 +523,8 @@
                     </div>
                 </div>
                 <div class="contact-form">
-                    <form action="https://formsubmit.co/graciousloveacademy23@gmail.com" method="POST">
+                    <form id="contact-form" action="https://formsubmit.co/graciousloveacademy23@gmail.com" method="POST">
                         <input type="hidden" name="_subject" value="New Inquiry — Gracious Love Academy Website">
-                        <!-- ✅ FIX: Removed _captcha false to stop spam -->
                         <input type="hidden" name="_template" value="table">
                         <input type="hidden" name="_next" value="https://graciousloveacademy.netlify.app/thankyou.html">
 
@@ -598,25 +598,28 @@
                     </ul>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Gracious Love Academy. All rights reserved. | Designed by Victor Muregi</p>
-            </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2026 Gracious Love Academy. All rights reserved.</p>
+                </div>
         </div>
     </footer>
 
-    <!-- ✅ FIX: Corrected script path from script.js to js/script.js -->
+    <a href="https://wa.me/254727345438?text=Hello%20Gracious%20Love%20Academy%2C%20I%20would%20like%20more%20information%20about%20admissions." class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
     <script src="js/script.js"></script>
 
-    <!-- ✅ SEO: Enhanced JSON-LD Schema — EducationalOrganization + FAQ (for Google rich results) -->
+    <!-- JSON-LD structured data -->
     <script type="application/ld+json">
     {
     "@context": "https://schema.org",
-    "@type": "EducationalOrganization",
+    "@type": ["EducationalOrganization", "LocalBusiness"],
     "name": "Gracious Love Academy",
     "alternateName": "GLA",
     "slogan": "Knowledge for Diversity",
     "url": "https://graciousloveacademy.netlify.app",
-    "logo": "https://graciousloveacademy.netlify.app/images/logo.png",
+    "logo": "https://graciousloveacademy.netlify.app/favicon.svg",
     "image": "https://graciousloveacademy.netlify.app/images/hero-bg.jpeg",
     "description": "Quality CBC primary school education from Play Group to Grade 6 in Njomoko, Thika. Affordable fees from KES 6,500/term.",
     "address": {
@@ -656,6 +659,22 @@
         "https://www.facebook.com/groups/218779857577639",
         "https://www.tiktok.com/@gracious.love.aca"
     ]
+    }
+    </script>
+
+    <!-- ✅ SEO: Breadcrumb structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://graciousloveacademy.netlify.app/"
+            }
+        ]
     }
     </script>
 
