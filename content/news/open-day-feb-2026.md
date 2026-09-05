@@ -3,6 +3,9 @@ title: "Term 1 Open Day — Saturday 15th February"
 date: 2026-02-10
 image: "images/news/open-day.jpg"
 ---
-We welcomed prospective parents to our Term 1 Open Day. The school was full of energy as teachers demonstrated lessons and children showed off their work.
+We welcome all prospective parents to our Term 1 Open Day this Saturday. Tour the school, meet our teachers, and see our classrooms in action.
 
-Thank you to everyone who came. If you missed it, call or WhatsApp us to arrange a personal visit.
+Time: 10:00 AM – 1:00 PM
+Location: Njomoko, near Kingdom Seekers Church, Thika
+
+No appointment needed. Just walk in or call ahead.

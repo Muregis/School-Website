@@ -165,7 +165,7 @@
             grid.innerHTML = team.map(member => `
                 <div class="team-card">
                     <div class="team-photo">
-                        <img src="${member.photo}" alt="${member.name}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\\'team-photo-placeholder\\'><i class=\\'fas fa-user\\'></i></div>'">
+                        <img src="${member.photo}" alt="${member.name}" loading="lazy" onerror="this.style.display='none'">
                     </div>
                     <div class="team-info">
                         <h3>${member.name}</h3>
@@ -181,5 +181,18 @@
     }
     loadTeam();
     </script>
+    <style>
+        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px; }
+        .team-card { background: var(--warm-white); border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--border); transition: var(--transition); }
+        .team-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+        .team-photo { width: 100%; height: 320px; overflow: hidden; background: var(--cream); display: flex; align-items: center; justify-content: center; }
+        .team-photo img { width: 100%; height: 100%; object-fit: cover; }
+        .team-info { padding: 24px; }
+        .team-info h3 { font-size: 1.125rem; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+        .team-role { font-size: 0.875rem; color: var(--terracotta); font-weight: 600; margin-bottom: 12px; }
+        .team-bio { font-size: 0.9375rem; color: var(--charcoal); line-height: 1.7; margin-bottom: 12px; }
+        .team-years { font-size: 0.8125rem; color: var(--muted); }
+        .team-years i { color: var(--sage); margin-right: 6px; }
+    </style>
 </body>
 </html>
