@@ -1,33 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Content Manager — Gracious Love Academy</title>
-    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', -apple-system, sans-serif; background: #f5f5f5; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
-        .login-box { background: white; padding: 48px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); max-width: 400px; width: 90%; text-align: center; }
-        .login-box img { width: 64px; height: 64px; margin-bottom: 24px; }
-        .login-box h1 { font-size: 1.5rem; color: #1a2744; margin-bottom: 8px; }
-        .login-box p { color: #6b7280; font-size: 0.9375rem; margin-bottom: 32px; }
-        .login-box a { display: inline-block; background: #c4704b; color: white; padding: 14px 28px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; }
-        .login-box a:hover { background: #a35d3a; transform: translateY(-2px); }
-        .login-box .note { margin-top: 24px; font-size: 0.8125rem; color: #6b7280; line-height: 1.6; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Content Manager — Gracious Love Academy</title>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
 </head>
 <body>
-    <div class="login-box">
-        <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <polygon points="32,8 56,24 32,40 8,24" fill="#1a2744"/>
-            <rect x="14" y="24" width="36" height="4" rx="2" fill="#c4704b"/>
-        </svg>
-        <h1>Gracious Love Academy</h1>
-        <p>Content Management System</p>
-        <a href="https://github.com/login/oauth/authorize?client_id=Ov23liedwM3YUNsLM0sZ&redirect_uri=https://graciousloveacademy-school-website.vercel.app/admin/&scope=repo">Sign in with GitHub</a>
-        <p class="note">You need a GitHub account with access to this repository.<br>Contact the school administrator if you need access.</p>
-    </div>
-    <script src="https://decap-cms.netlify.app/dist/cms.js"></script>
+  <!-- Decap CMS -->
+  <script src="https://unpkg.com/decap-cms@^3.1.10/dist/decap-cms.js"></script>
 </body>
 </html>
