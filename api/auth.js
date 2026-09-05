@@ -17,7 +17,7 @@ export default async function handler(request, response) {
       const body = await request.json();
       const { password } = body;
       
-      const adminPassword = process.env.ADMIN_PASSWORD || 'gla2026admin';
+      const adminPassword = process.env.ADMIN_PASSWORD || 'admin2026';
       
       if (password === adminPassword) {
         const sessionId = crypto.randomUUID();

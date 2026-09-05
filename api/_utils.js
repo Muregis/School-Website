@@ -1,13 +1,18 @@
-import { kv } from '@vercel/kv';
+let inMemoryStore = new Map();
+let kvAvailable = null;
 
-function getCookie(request, name) {
-  const cookieHeader = request.headers.get('cookie');
-  if (!cookieHeader) return null;
-  const cookies = cookieHeader.split(';').map(c => c.trim().split('='));
-  for (const [key, value] of cookies) {
-    if (key === name) return decodeURIComponent(value);
+async function getKV() {
+  if (kvAvailable === null) {
+    try {
+      const mod = await import('@vercel/kv');
+      kvAvailable = mod.kv;
+      return mod.kv;
+    } catch {
+      kvAvailable = false;
+      return null;
+    }
   }
-  return null;
+  return kvAvailable || null;
 }
 
 export async function checkAuth(request) {
@@ -15,11 +20,20 @@ export async function checkAuth(request) {
   if (!sessionId) return false;
   
   try {
-    const session = await kv.get(`session:${sessionId}`);
-    return !!session;
-  } catch {
+    const kv = await getKV();
+    if (kv) {
+      const session = await kv.get(`session:${sessionId}`);
+      return !!session;
+    }
+  } catch {}
+  
+  const mem = inMemoryStore.get(`session:${sessionId}`);
+  if (!mem) return false;
+  if (Date.now() > mem.expires) {
+    inMemoryStore.delete(`session:${sessionId}`);
     return false;
   }
+  return true;
 }
 
 export async function requireAuth(request, response) {
@@ -33,11 +47,12 @@ export async function requireAuth(request, response) {
 
 export async function getContent(key, fallbackPath) {
   try {
-    const data = await kv.get(key);
-    if (data) return data;
-  } catch {
-    // KV not available, fall back to local file
-  }
+    const kv = await getKV();
+    if (kv) {
+      const data = await kv.get(key);
+      if (data) return data;
+    }
+  } catch {}
   
   try {
     const fs = await import('fs');
@@ -52,11 +67,15 @@ export async function getContent(key, fallbackPath) {
 
 export async function setContent(key, value) {
   try {
-    await kv.set(key, JSON.stringify(value));
-    return true;
-  } catch {
-    return false;
-  }
+    const kv = await getKV();
+    if (kv) {
+      await kv.set(key, JSON.stringify(value));
+      return true;
+    }
+  } catch {}
+  
+  inMemoryStore.set(key, JSON.stringify(value));
+  return true;
 }
 
 export function corsHeaders() {
