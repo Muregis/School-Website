@@ -5,30 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page Not Found | Gracious Love Academy</title>
     <meta name="description" content="The page you are looking for does not exist. Return to Gracious Love Academy's homepage to explore our CBC primary school programs in Thika, Kenya.">
-    <link rel="canonical" href="https://graciousloveacademy.netlify.app/">
+    <link rel="canonical" href="https://graciousloveacademy-school-website.vercel.app/">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/style.css">
-    <meta property="og:url" content="https://graciousloveacademy.netlify.app/">
     <meta property="og:title" content="Page Not Found | Gracious Love Academy">
     <meta property="og:description" content="The page you are looking for does not exist. Return to our homepage.">
-    <meta property="og:image" content="https://graciousloveacademy.netlify.app/images/hero-bg.jpeg">
-    <meta property="og:image:alt" content="Gracious Love Academy campus">
     <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Gracious Love Academy">
+    <meta property="og:url" content="https://graciousloveacademy-school-website.vercel.app/">
+    <meta property="og:image" content="https://graciousloveacademy-school-website.vercel.app/images/hero-bg.jpeg">
+    <meta property="og:image:alt" content="Students at Gracious Love Academy in Thika">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://graciousloveacademy.netlify.app/">
+    <meta name="twitter:url" content="https://graciousloveacademy-school-website.vercel.app/">
     <meta name="twitter:title" content="Page Not Found | Gracious Love Academy">
     <meta name="twitter:description" content="The page you are looking for does not exist. Return to our homepage.">
-    <meta name="twitter:image" content="https://graciousloveacademy.netlify.app/images/hero-bg.jpeg">
-    <meta name="twitter:image:alt" content="Gracious Love Academy campus">
+    <meta name="twitter:image" content="https://graciousloveacademy-school-website.vercel.app/images/hero-bg.jpeg">
+    <meta name="twitter:image:alt" content="Students at Gracious Love Academy in Thika">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "WebPage",
         "name": "Page Not Found | Gracious Love Academy",
         "description": "The page you are looking for does not exist.",
-        "url": "https://graciousloveacademy.netlify.app/404.html"
+        "url": "https://graciousloveacademy-school-website.vercel.app/404.html"
     }
     </script>
     <script type="application/ld+json">
@@ -40,13 +42,13 @@
                 "@type": "ListItem",
                 "position": 1,
                 "name": "Home",
-                "item": "https://graciousloveacademy.netlify.app/"
+                "item": "https://graciousloveacademy-school-website.vercel.app/"
             },
             {
                 "@type": "ListItem",
                 "position": 2,
                 "name": "404 - Page Not Found",
-                "item": "https://graciousloveacademy.netlify.app/404.html"
+                "item": "https://graciousloveacademy-school-website.vercel.app/404.html"
             }
         ]
     }
@@ -58,57 +60,50 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 100px 20px;
-            background: linear-gradient(135deg, rgba(21, 101, 192, 0.06), rgba(198, 40, 40, 0.06));
+            padding: 100px 24px;
+            background-color: var(--cream);
         }
         .not-found-content {
-            max-width: 600px;
+            max-width: 520px;
         }
         .not-found-code {
-            font-size: 8rem;
+            font-size: 6rem;
             font-weight: 900;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--navy);
             line-height: 1;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
         .not-found-content h1 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: var(--dark);
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 16px;
         }
         .not-found-content p {
-            color: var(--gray);
-            font-size: 1.2rem;
-            margin-bottom: 40px;
-            line-height: 1.8;
+            font-size: 1.0625rem;
+            color: var(--charcoal);
+            margin-bottom: 32px;
+            line-height: 1.7;
+        }
+        .not-found-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: center;
+        }
+        .not-found-links a {
+            font-weight: 600;
         }
     </style>
 </head>
 <body>
-    <nav class="navbar" id="navbar">
+    <nav class="navbar">
         <div class="container">
-            <div class="nav-wrapper">
-                <div class="logo">
+            <div class="nav-container">
+                <a href="index.html" class="logo">
                     <i class="fas fa-graduation-cap"></i>
-                    <span>GRACIOUS LOVE ACADEMY</span>
-                </div>
-                <ul class="nav-menu" id="nav-menu">
-                    <li><a href="index.html" class="nav-link">Home</a></li>
-                    <li><a href="index.html#about" class="nav-link">About</a></li>
-                    <li><a href="index.html#programs" class="nav-link">Programs</a></li>
-                    <li><a href="index.html#gallery" class="nav-link">Gallery</a></li>
-                    <li><a href="index.html#fees" class="nav-link">Fee Structure</a></li>
-                    <li><a href="index.html#contact" class="nav-link">Contact</a></li>
-                    <li><a href="index.html#contact" class="btn-enroll">Enroll Now</a></li>
-                </ul>
-                <div class="hamburger" id="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
+                    <span>Gracious Love Academy</span>
+                </a>
             </div>
         </div>
     </nav>
@@ -116,55 +111,23 @@
     <section class="not-found-section">
         <div class="not-found-content">
             <div class="not-found-code">404</div>
-            <h1>Page Not Found</h1>
-            <p>Oops! The page you are looking for seems to have moved or no longer exists. Don't worry, you can find your way back to our homepage.</p>
-            <a href="index.html" class="btn btn-primary">
-                <i class="fas fa-home"></i> Back to Homepage
-            </a>
+            <h1>Page not found</h1>
+            <p>The page you are looking for seems to have moved or no longer exists. You can find your way back to our homepage.</p>
+            <div class="not-found-links">
+                <a href="index.html" class="btn btn-primary">Back to Homepage</a>
+                <a href="index.html#about">About</a>
+                <a href="index.html#programs">Programs</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
         </div>
     </section>
 
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Gracious Love Academy</h3>
-                    <p>Quality CBC education from Play Group to Grade 6 in Njomoko, Thika. Shaping Kenya's future, one child at a time.</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="index.html#about">About Us</a></li>
-                        <li><a href="index.html#programs">Programs</a></li>
-                        <li><a href="index.html#gallery">Gallery</a></li>
-                        <li><a href="index.html#fees">Fee Structure</a></li>
-                        <li><a href="index.html#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Programs</h3>
-                    <ul>
-                        <li><a href="index.html#programs">Early Years (PP1 &amp; PP2)</a></li>
-                        <li><a href="index.html#programs">Lower Primary (Grade 1-3)</a></li>
-                        <li><a href="index.html#programs">Upper Primary (Grade 4-6)</a></li>
-                        <li><a href="index.html#contact">Admission</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Contact Info</h3>
-                    <ul>
-                        <li><i class="fas fa-map-marker-alt"></i> Njomoko, near Kingdom Seekers Church, Thika</li>
-                        <li><i class="fas fa-phone"></i> <a href="tel:+254727345438">+254 727 345 438</a></li>
-                        <li><i class="fas fa-envelope"></i> <a href="mailto:graciousloveacademy23@gmail.com">graciousloveacademy23@gmail.com</a></li>
-                    </ul>
-                </div>
-            </div>
             <div class="footer-bottom">
                 <p>&copy; 2026 Gracious Love Academy. All rights reserved.</p>
             </div>
         </div>
     </footer>
-
-    <script src="js/script.js"></script>
 </body>
 </html>

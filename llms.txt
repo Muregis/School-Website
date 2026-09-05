@@ -1,51 +1,73 @@
 # Gracious Love Academy
 
-Gracious Love Academy is a leading CBC primary school located in Njomoko, Thika, Kiambu County, Kenya. We provide quality education from Play Group to Grade 6 under the Competency Based Curriculum (CBC) approved by KICD.
+Gracious Love Academy is a small CBC primary school in Njomoko, Thika, Kiambu County, Kenya. We offer education from PP1 through Grade 6 under the Kenyan Competency Based Curriculum (CBC) approved by KICD.
 
 ## About
 
-Founded in 2023, Gracious Love Academy is committed to nurturing young minds through affordable, high-quality education. Our school is located near Kingdom Seekers Church in Thika, behind SK Suites.
+Founded in 2023, Gracious Love Academy is committed to knowing each child. We maintain small class sizes so teachers can build real relationships, track individual progress, and communicate regularly with parents.
 
-- **Location:** Njomoko, near Kingdom Seekers Church, Thika, Kiambu County, Kenya
+- **Location:** Njomoko, near Kingdom Seekers Church, Thika — behind SK Suites
 - **Phone:** +254 727 345 438
+- **WhatsApp:** https://wa.me/254727345438
 - **Email:** graciousloveacademy23@gmail.com
-- **Website:** https://graciousloveacademy.netlify.app
-- **Curriculum:** Competency Based Curriculum (CBC) — Play Group, PP1, PP2, Grade 1–6
+- **Website:** https://graciousloveacademy-school-website.vercel.app/
+- **Curriculum:** Competency Based Curriculum (CBC) — PP1, PP2, Grade 1–6
 
 ## Programs
 
 ### Early Years (PP1 & PP2)
-Play-based learning foundation preparing children for formal education. Ages 4–6 years.
+Ages 4–6. Play-based learning with stories, songs, guided play, and gentle structure.
 
 ### Lower Primary (Grade 1–3)
-Building strong literacy and numeracy foundations through competency-based learning.
+Ages 6–9. Daily phonics, practical numeracy, creative arts, and individual progress checks.
 
 ### Upper Primary (Grade 4–6)
-Deepening knowledge and skills in preparation for junior secondary education.
+Ages 9–12. Subject-specific teaching, leadership opportunities, and preparation for junior secondary.
+
+## Team
+
+- **Mrs. Grace Muthoni** — Headteacher (12 years experience)
+- **Mr. John Kamau** — PP1 & PP2 Teacher (8 years experience)
+- **Ms. Sarah Wanjiku** — Grade 1–3 Teacher (6 years experience)
+- **Mr. David Njoroge** — Grade 4–6 Teacher (5 years experience)
+
+## Admissions Process
+
+1. Book a visit
+2. Tour the school and meet the teacher
+3. Complete registration
+4. Start date confirmed
 
 ## Fee Structure
 
-- **Pre-Primary:** From KES 6,500/term
-- **Lower Primary:** From KES 7,500/term
-- **Upper Primary:** From KES 9,500/term
+- **PP1 & PP2:** KES 6,500 per term
+- **Grade 1–3:** KES 7,500 per term
+- **Grade 4–6:** KES 9,500 per term
 
-Flexible payment plans available. Download the complete fee structure PDF: https://graciousloveacademy.netlify.app/downloads/fee-structure-2026.pdf
+Payment plans available. Download the full fee structure: https://graciousloveacademy-school-website.vercel.app/downloads/fee-structure-2026.pdf
 
-## Admissions
+## Term Dates 2026
 
-We welcome new students throughout the year. To enroll:
+- **Term 1:** January 2026 — April 2026
+- **Term 2:** May 2026 — August 2026
+- **Term 3:** September 2026 — November 2026
 
-1. Visit the school in person
-2. Call +254 727 345 438
-3. Email graciousloveacademy23@gmail.com
-4. Fill in the contact form on our website
+Open Day: Saturday, 10:00 AM – 1:00 PM
+
+## Operating Hours
+
+- Monday – Friday: 8:00 AM – 5:00 PM
+- Saturday: 9:00 AM – 1:00 PM
 
 ## Social Media
 
 - Facebook: https://www.facebook.com/groups/218779857577639
 - TikTok: https://www.tiktok.com/@gracious.love.aca
 
-## Operating Hours
+## Website Pages
 
-- Monday – Friday: 8:00 AM – 5:00 PM
-- Saturday: 9:00 AM – 1:00 PM
+- Home: https://graciousloveacademy-school-website.vercel.app/
+- Team: https://graciousloveacademy-school-website.vercel.app/team.html
+- News: https://graciousloveacademy-school-website.vercel.app/news.html
+- Gallery: https://graciousloveacademy-school-website.vercel.app/gallery.html
+- Calendar: https://graciousloveacademy-school-website.vercel.app/calendar.html

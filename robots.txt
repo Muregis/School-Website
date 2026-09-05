@@ -1,7 +1,10 @@
 User-agent: *
 Allow: /
+Disallow: /images/
+Disallow: /css/
+Disallow: /js/
 
-Sitemap: https://graciousloveacademy.netlify.app/sitemap.xml
+Sitemap: https://graciousloveacademy-school-website.vercel.app/sitemap.xml
 
 User-agent: Googlebot
 Allow: /

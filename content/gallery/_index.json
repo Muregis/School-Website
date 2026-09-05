@@ -1,0 +1,50 @@
+[
+  {
+    "image": "images/gallery-1.jpeg",
+    "alt": "Students doing morning exercises at Gracious Love Academy",
+    "category": "Events",
+    "caption": "Morning Exercises"
+  },
+  {
+    "image": "images/gallery-2.jpeg",
+    "alt": "Group activities and teamwork at Gracious Love Academy",
+    "category": "Play",
+    "caption": "Group Activities"
+  },
+  {
+    "image": "images/gallery-3.jpeg",
+    "alt": "School assembly at Gracious Love Academy Njomoko",
+    "category": "Events",
+    "caption": "School Assembly"
+  },
+  {
+    "image": "images/gallery-4.jpeg",
+    "alt": "Graduation ceremony at Gracious Love Academy Thika",
+    "category": "Events",
+    "caption": "Graduation Day"
+  },
+  {
+    "image": "images/gallery-5.jpeg",
+    "alt": "Outdoor learning activities for CBC students in Thika",
+    "category": "Outdoor",
+    "caption": "Outdoor Activities"
+  },
+  {
+    "image": "images/gallery-6.jpeg",
+    "alt": "Playground time at Gracious Love Academy primary school",
+    "category": "Play",
+    "caption": "Playground Time"
+  },
+  {
+    "image": "images/gallery-7.jpeg",
+    "alt": "Physical education lesson at Gracious Love Academy",
+    "category": "Classroom",
+    "caption": "Physical Education"
+  },
+  {
+    "image": "images/gallery-8.jpeg",
+    "alt": "Class photo of students at Gracious Love Academy Thika",
+    "category": "Classroom",
+    "caption": "Class Photo"
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "term1_start": "January 2026",
+  "term1_end": "April 2026",
+  "term2_start": "May 2026",
+  "term2_end": "August 2026",
+  "term3_start": "September 2026",
+  "term3_end": "November 2026",
+  "open_day": "Saturday, 10:00 AM – 1:00 PM",
+  "registration": "Ongoing",
+  "events": [
+    { "date": "2026-02-15", "title": "Term 1 Open Day", "description": "Tour the school, meet teachers, and ask questions." },
+    { "date": "2026-04-10", "title": "Term 1 Closing", "description": "Last day of Term 1. Reports issued." },
+    { "date": "2026-05-05", "title": "Term 2 Begins", "description": "First day of Term 2." },
+    { "date": "2026-08-21", "title": "Term 2 Closing", "description": "Last day of Term 2." },
+    { "date": "2026-09-07", "title": "Term 3 Begins", "description": "First day of Term 3." },
+    { "date": "2026-11-20", "title": "End of Year Celebration", "description": "Graduation and awards ceremony." }
+  ]
+}

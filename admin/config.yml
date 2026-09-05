@@ -1,0 +1,85 @@
+backend:
+  name: github
+  repo: muregis/School-Website
+  branch: main
+  base_url: https://graciousloveacademy-school-website.vercel.app/
+
+media_folder: images/uploads
+public_folder: /images/uploads
+
+collections:
+  - name: settings
+    label: Site Settings
+    files:
+      - file: content/settings.json
+        label: Homepage Settings
+        name: homepage
+        fields:
+          - { label: Hero Badge, name: hero_badge, widget: string, default: "Knowledge for Diversity" }
+          - { label: Hero Title, name: hero_title, widget: string, default: "Where every child is known" }
+          - { label: Hero Subtitle, name: hero_subtitle, widget: text, default: "A small CBC primary school in Njomoko, Thika — giving children the attention, values, and foundation they need to thrive." }
+          - { label: CTA Text, name: cta_text, widget: string, default: "Book a Visit" }
+          - { label: Phone Number, name: phone, widget: string, default: "+254 727 345 438" }
+          - { label: Email, name: email, widget: string, default: "graciousloveacademy23@gmail.com" }
+          - { label: WhatsApp Link, name: whatsapp_link, widget: string, default: "https://wa.me/254727345438" }
+
+  - name: team
+    label: Team Members
+    folder: content/team
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: Name, name: name, widget: string }
+      - { label: Role, name: role, widget: string, default: "Teacher" }
+      - { label: Photo, name: photo, widget: image, required: false }
+      - { label: Bio, name: bio, widget: text }
+      - { label: Years at GLA, name: years, widget: string, required: false }
+
+  - name: news
+    label: News & Updates
+    folder: content/news
+    create: true
+    slug: "{{year}}-{{month}}-{{slug}}"
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Date, name: date, widget: datetime, format: "YYYY-MM-DD" }
+      - { label: Image, name: image, widget: image, required: false }
+      - { label: Body, name: body, widget: markdown }
+
+  - name: events
+    label: Term Dates & Events
+    folder: content/events
+    files:
+      - file: content/events/term-dates.json
+        label: Term Dates
+        name: term_dates
+        fields:
+          - { label: Term 1 Start, name: term1_start, widget: string, default: "January 2026" }
+          - { label: Term 1 End, name: term1_end, widget: string, default: "April 2026" }
+          - { label: Term 2 Start, name: term2_start, widget: string, default: "May 2026" }
+          - { label: Term 2 End, name: term2_end, widget: string, default: "August 2026" }
+          - { label: Term 3 Start, name: term3_start, widget: string, default: "September 2026" }
+          - { label: Term 3 End, name: term3_end, widget: string, default: "November 2026" }
+          - { label: Open Day Date, name: open_day, widget: string, default: "Saturday, 10:00 AM – 1:00 PM" }
+          - { label: Registration Period, name: registration, widget: string, default: "Ongoing" }
+
+  - name: gallery
+    label: Gallery Images
+    folder: content/gallery
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: Image, name: image, widget: image }
+      - { label: Alt Text, name: alt, widget: string }
+      - { label: Category, name: category, widget: select, options: ["Classroom", "Play", "Events", "Outdoor"], default: "Events" }
+      - { label: Caption, name: caption, widget: string, required: false }
+
+  - name: pages
+    label: Page Content
+    folder: content/pages
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Body, name: body, widget: markdown }
+      - { label: Show in navigation, name: nav, widget: boolean, default: true }

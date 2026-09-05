@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Mrs. Grace Muthoni",
+    "role": "Headteacher",
+    "photo": "images/team/headteacher.jpg",
+    "bio": "Mrs. Muthoni founded Gracious Love Academy in 2023 with 12 years of experience in early childhood and primary education. She believes that every child learns best when they feel safe, seen, and heard. She teaches alongside her team and knows every child by name.",
+    "years": "12 years experience"
+  },
+  {
+    "name": "Mr. John Kamau",
+    "role": "PP1 & PP2 Teacher",
+    "photo": "images/team/teacher-pp1.jpg",
+    "bio": "Mr. Kamau brings 8 years of experience teaching early years. He specializes in play-based learning and language development. Children in his class learn through stories, songs, and hands-on activities that build confidence.",
+    "years": "8 years experience"
+  },
+  {
+    "name": "Ms. Sarah Wanjiku",
+    "role": "Grade 1 – 3 Teacher",
+    "photo": "images/team/teacher-lower.jpg",
+    "bio": "Ms. Wanjiku focuses on literacy and numeracy foundations. She uses daily phonics, practical maths, and creative arts to keep learning engaging. Parents appreciate her detailed progress updates and caring approach.",
+    "years": "6 years experience"
+  },
+  {
+    "name": "Mr. David Njoroge",
+    "role": "Grade 4 – 6 Teacher",
+    "photo": "images/team/teacher-upper.jpg",
+    "bio": "Mr. Njoroge prepares older students for junior secondary with subject-specific teaching, leadership projects, and regular parent meetings. He helps children understand their learning style and build independence.",
+    "years": "5 years experience"
+  }
+]
