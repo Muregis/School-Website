@@ -1,19 +1,4 @@
-let inMemoryStore = new Map();
-let kvAvailable = null;
-
-async function getKV() {
-  if (kvAvailable === null) {
-    try {
-      const mod = await import('@vercel/kv');
-      kvAvailable = mod.kv || mod.default?.kv || mod.default || null;
-      return kvAvailable;
-    } catch {
-      kvAvailable = false;
-      return null;
-    }
-  }
-  return kvAvailable || null;
-}
+const inMemoryStore = new Map();
 
 export function getCookie(request, name) {
   const cookieHeader = request.headers.get('cookie');
@@ -28,14 +13,6 @@ export function getCookie(request, name) {
 export async function checkAuth(request) {
   const sessionId = getCookie(request, 'admin_session');
   if (!sessionId) return false;
-  
-  try {
-    const kv = await getKV();
-    if (kv) {
-      const session = await kv.get(`session:${sessionId}`);
-      return !!session;
-    }
-  } catch {}
   
   const mem = inMemoryStore.get(`session:${sessionId}`);
   if (!mem) return false;
@@ -56,13 +33,8 @@ export async function requireAuth(request, response) {
 }
 
 export async function getContent(key, fallbackPath) {
-  try {
-    const kv = await getKV();
-    if (kv) {
-      const data = await kv.get(key);
-      if (data !== null && data !== undefined) return data;
-    }
-  } catch {}
+  const memData = inMemoryStore.get(key);
+  if (memData) return JSON.parse(memData);
   
   try {
     const fs = await import('fs');
@@ -76,14 +48,6 @@ export async function getContent(key, fallbackPath) {
 }
 
 export async function setContent(key, value) {
-  try {
-    const kv = await getKV();
-    if (kv) {
-      await kv.set(key, JSON.stringify(value));
-      return true;
-    }
-  } catch {}
-  
   inMemoryStore.set(key, JSON.stringify(value));
   return true;
 }
@@ -96,4 +60,4 @@ export function corsHeaders() {
   };
 }
 
-export { inMemoryStore, getKV };
+export { inMemoryStore };

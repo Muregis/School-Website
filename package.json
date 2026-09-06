@@ -5,8 +5,5 @@
   "scripts": {
     "dev": "vercel dev",
     "build": "echo 'Static site with API routes'"
-  },
-  "dependencies": {
-    "@vercel/kv": "^2.0.0"
   }
 }
