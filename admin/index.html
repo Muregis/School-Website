@@ -176,11 +176,17 @@
             btnText.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Checking...';
             
             try {
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 10000);
+                
                 const res = await fetch('/api/auth', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ password })
+                    body: JSON.stringify({ password }),
+                    signal: controller.signal
                 });
+                
+                clearTimeout(timeoutId);
                 
                 const data = await res.json();
                 
@@ -192,7 +198,7 @@
                     loginBtn.disabled = false;
                     btnText.textContent = 'Log In';
                 }
-            } catch {
+            } catch (error) {
                 errorMsg.textContent = 'Something went wrong. Please try again.';
                 errorMsg.classList.add('visible');
                 loginBtn.disabled = false;
