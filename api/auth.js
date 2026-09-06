@@ -19,7 +19,9 @@ export default async function handler(request, response) {
       const adminPassword = process.env.ADMIN_PASSWORD || 'admin2026';
       
       if (password === adminPassword) {
-        const sessionId = crypto.randomUUID();
+        const sessionId = typeof crypto !== 'undefined' && crypto.randomUUID 
+          ? crypto.randomUUID() 
+          : `${Date.now()}-${Math.random().toString(36).substring(2)}`;
         const expiresAt = Date.now() + (86400 * 1000);
         
         try {
@@ -29,7 +31,8 @@ export default async function handler(request, response) {
           } else {
             inMemoryStore.set(`session:${sessionId}`, { expires: expiresAt });
           }
-        } catch {
+        } catch (err) {
+          console.error('Session store error:', err);
           inMemoryStore.set(`session:${sessionId}`, { expires: expiresAt });
         }
         
