@@ -286,6 +286,78 @@
             background: #b91c1c;
             color: white;
         }
+        .preview-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(26, 39, 68, 0.5);
+            backdrop-filter: blur(4px);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+        .preview-overlay.visible {
+            display: flex;
+        }
+        .preview-dialog {
+            background: white;
+            border-radius: 16px;
+            width: 100%;
+            max-width: 900px;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+        }
+        .preview-header {
+            padding: 20px 24px;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .preview-header h3 {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: #1a2744;
+        }
+        .preview-close {
+            background: none;
+            border: none;
+            font-size: 1.25rem;
+            color: #6b7280;
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 6px;
+        }
+        .preview-close:hover {
+            background: #faf8f5;
+            color: #1a2744;
+        }
+        .preview-body {
+            padding: 24px;
+            overflow-y: auto;
+            flex: 1;
+        }
+        .preview-frame {
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            overflow: hidden;
+            background: white;
+        }
+        .preview-frame iframe {
+            width: 100%;
+            height: 70vh;
+            border: none;
+        }
+        .preview-actions {
+            padding: 16px 24px;
+            border-top: 1px solid #e5e7eb;
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+        }
         .item-list {
             display: flex;
             flex-direction: column;
@@ -460,6 +532,9 @@
                 </div>
                 
                 <div class="actions">
+                    <button class="btn btn-secondary" onclick="openPreview()">
+                        <i class="fas fa-eye"></i> Preview
+                    </button>
                     <button class="btn btn-primary" onclick="saveSettings()">
                         <i class="fas fa-save"></i> Save Changes
                     </button>
@@ -499,6 +574,9 @@
                         <p style="font-size: 0.8125rem; color: #6b7280; margin-top: 6px;">Square photos work best (1:1 ratio). JPG or PNG.</p>
                     </div>
                     <div class="actions">
+                        <button class="btn btn-secondary" onclick="openPreview()">
+                            <i class="fas fa-eye"></i> Preview
+                        </button>
                         <button class="btn btn-primary" onclick="addTeamMember()">
                             <i class="fas fa-plus"></i> Add Team Member
                         </button>
@@ -545,6 +623,9 @@
                         <textarea id="news-body" placeholder="Write the full news story here..."></textarea>
                     </div>
                     <div class="actions">
+                        <button class="btn btn-secondary" onclick="openPreview()">
+                            <i class="fas fa-eye"></i> Preview
+                        </button>
                         <button class="btn btn-primary" onclick="addNewsPost()">
                             <i class="fas fa-plus"></i> Publish Post
                         </button>
@@ -592,6 +673,9 @@
                         </div>
                     </div>
                     <div class="actions">
+                        <button class="btn btn-secondary" onclick="openPreview()">
+                            <i class="fas fa-eye"></i> Preview
+                        </button>
                         <button class="btn btn-primary" onclick="addGalleryImage()">
                             <i class="fas fa-upload"></i> Upload to Gallery
                         </button>
@@ -682,6 +766,9 @@
                 </div>
                 
                 <div class="actions">
+                    <button class="btn btn-secondary" onclick="openPreview()">
+                        <i class="fas fa-eye"></i> Preview
+                    </button>
                     <button class="btn btn-primary" onclick="saveEvents()">
                         <i class="fas fa-save"></i> Save All Changes
                     </button>
@@ -691,6 +778,30 @@
     </div>
     
     <div class="toast" id="toast"></div>
+    
+    <div class="preview-overlay" id="preview-overlay">
+        <div class="preview-dialog">
+            <div class="preview-header">
+                <h3>Live Preview</h3>
+                <button class="preview-close" onclick="closePreview()" aria-label="Close preview">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="preview-body">
+                <div class="preview-frame">
+                    <iframe id="preview-frame" title="Website preview"></iframe>
+                </div>
+            </div>
+            <div class="preview-actions">
+                <button class="btn btn-secondary" onclick="closePreview()">
+                    Close Preview
+                </button>
+                <a href="/" target="_blank" class="btn btn-primary">
+                    Open Full Site <i class="fas fa-external-link-alt"></i>
+                </a>
+            </div>
+        </div>
+    </div>
 
     <script>
         // State
@@ -1147,6 +1258,166 @@
             setupFilePreview('gallery-photo-file', 'gallery-photo-preview', 'gallery-image');
             loadAllData();
         });
+        
+        // Preview
+        function openPreview() {
+            const overlay = document.getElementById('preview-overlay');
+            const frame = document.getElementById('preview-frame');
+            const html = generatePreviewHTML();
+            frame.srcdoc = html;
+            overlay.classList.add('visible');
+        }
+        
+        function closePreview() {
+            document.getElementById('preview-overlay').classList.remove('visible');
+        }
+        
+        document.getElementById('preview-overlay')?.addEventListener('click', (e) => {
+            if (e.target.id === 'preview-overlay') closePreview();
+        });
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closePreview();
+        });
+        
+        function generatePreviewHTML() {
+            const settings = {
+                hero_badge: document.getElementById('setting-hero_badge')?.value || 'Knowledge for Diversity',
+                hero_title: document.getElementById('setting-hero_title')?.value || 'Where every child is known',
+                hero_subtitle: document.getElementById('setting-hero_subtitle')?.value || '',
+                cta_text: document.getElementById('setting-cta_text')?.value || 'Book a Visit',
+                phone: document.getElementById('setting-phone')?.value || '+254 727 345 438',
+                email: document.getElementById('setting-email')?.value || 'graciousloveacademy23@gmail.com',
+                whatsapp_link: document.getElementById('setting-whatsapp_link')?.value || 'https://wa.me/254727345438'
+            };
+            
+            const teamItems = teamData.slice(0, 3).map(member => `
+                <div class="team-card">
+                    <div class="team-photo">
+                        ${member.photo ? `<img src="${member.photo}" alt="${member.name}">` : '<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#faf8f5;color:#6b7280;"><i class="fas fa-user"></i></div>'}
+                    </div>
+                    <div class="team-info">
+                        <h3>${member.name}</h3>
+                        <p class="team-role">${member.role}</p>
+                        <p class="team-bio">${member.bio}</p>
+                    </div>
+                </div>
+            `).join('');
+            
+            const newsItems = [...newsData].sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 3).map(post => `
+                <article class="news-card">
+                    ${post.image ? `<div class="news-image"><img src="${post.image}" alt="${post.title}"></div>` : ''}
+                    <div class="news-content">
+                        <time class="news-date">${post.date}</time>
+                        <h3>${post.title}</h3>
+                        <p>${post.excerpt || post.body?.substring(0, 120)}</p>
+                    </div>
+                </article>
+            `).join('');
+            
+            const galleryItems = galleryData.slice(0, 6).map(item => `
+                <div class="gallery-item">
+                    <img src="${item.image}" alt="${item.alt || ''}">
+                    <div class="gallery-overlay"><i class="fas fa-search-plus"></i><span>${item.caption || ''}</span></div>
+                </div>
+            `).join('');
+            
+            return `<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preview — Gracious Love Academy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #faf8f5; color: #2d2d2d; }
+        .hero { position: relative; padding: 120px 0 80px; background: #1a2744; color: white; text-align: center; }
+        .hero-badge { display: inline-block; background: rgba(196,112,75,0.2); color: #c4704b; padding: 8px 16px; border-radius: 100px; font-size: 0.875rem; font-weight: 600; margin-bottom: 24px; }
+        .hero-title { font-size: 2.5rem; font-weight: 800; margin-bottom: 16px; }
+        .hero-subtitle { font-size: 1.125rem; opacity: 0.9; max-width: 600px; margin: 0 auto 32px; }
+        .section { padding: 80px 0; }
+        .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+        .section-header { text-align: center; margin-bottom: 64px; }
+        .section-tag { display: inline-block; font-size: 0.875rem; font-weight: 600; color: #c4704b; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px; }
+        .section-title { font-size: 2rem; font-weight: 800; color: #1a2744; margin-bottom: 16px; }
+        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px; }
+        .team-card { background: white; border-radius: 12px; overflow: hidden; border: 1px solid #e5e7eb; }
+        .team-photo { width: 100%; height: 320px; overflow: hidden; background: #faf8f5; }
+        .team-photo img { width: 100%; height: 100%; object-fit: cover; }
+        .team-info { padding: 24px; }
+        .team-info h3 { font-size: 1.125rem; font-weight: 700; color: #1a2744; margin-bottom: 4px; }
+        .team-role { font-size: 0.875rem; color: #c4704b; font-weight: 600; margin-bottom: 12px; }
+        .team-bio { font-size: 0.9375rem; color: #6b7280; line-height: 1.7; }
+        .news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; }
+        .news-card { background: white; border-radius: 12px; overflow: hidden; border: 1px solid #e5e7eb; }
+        .news-image { width: 100%; height: 220px; overflow: hidden; }
+        .news-image img { width: 100%; height: 100%; object-fit: cover; }
+        .news-content { padding: 24px; }
+        .news-date { font-size: 0.8125rem; color: #c4704b; font-weight: 600; display: block; margin-bottom: 8px; }
+        .news-card h3 { font-size: 1.125rem; font-weight: 700; color: #1a2744; margin-bottom: 12px; }
+        .news-card p { font-size: 0.9375rem; color: #6b7280; line-height: 1.7; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+        .gallery-item { position: relative; border-radius: 12px; overflow: hidden; aspect-ratio: 1; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
+        .gallery-overlay { position: absolute; inset: 0; background: rgba(26,39,68,0.6); color: white; display: flex; align-items: center; justify-content: center; gap: 8px; opacity: 0; transition: opacity 0.3s; }
+        .gallery-item:hover .gallery-overlay { opacity: 1; }
+        .btn { display: inline-block; background: #c4704b; color: white; padding: 14px 28px; border-radius: 8px; text-decoration: none; font-weight: 600; }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="container">
+            <div class="hero-badge">${settings.hero_badge}</div>
+            <h1 class="hero-title">${settings.hero_title}</h1>
+            <p class="hero-subtitle">${settings.hero_subtitle}</p>
+            <a href="#contact" class="btn">${settings.cta_text}</a>
+        </div>
+    </section>
+    
+    <section class="section" style="background: white;">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">Our Team</div>
+                <h2 class="section-title">The people who teach your child</h2>
+            </div>
+            <div class="team-grid">${teamItems || '<p style="text-align:center;color:#6b7280;">No team members yet.</p>'}</div>
+        </div>
+    </section>
+    
+    <section class="section" style="background: #faf8f5;">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">News & Updates</div>
+                <h2 class="section-title">Latest from our school</h2>
+            </div>
+            <div class="news-grid">${newsItems || '<p style="text-align:center;color:#6b7280;">No news posts yet.</p>'}</div>
+        </div>
+    </section>
+    
+    <section class="section" style="background: white;">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">Gallery</div>
+                <h2 class="section-title">School life</h2>
+            </div>
+            <div class="gallery-grid">${galleryItems || '<p style="text-align:center;color:#6b7280;">Gallery coming soon.</p>'}</div>
+        </div>
+    </section>
+    
+    <section class="section" id="contact" style="background: #faf8f5;">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">Contact</div>
+                <h2 class="section-title">Get in touch</h2>
+            </div>
+            <p style="text-align:center;color:#6b7280;">Phone: ${settings.phone} | Email: ${settings.email}</p>
+        </div>
+    </section>
+</body>
+</html>`;
+    }
     </script>
 </body>
 </html>

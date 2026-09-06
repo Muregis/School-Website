@@ -1,14 +1,14 @@
 {
   "hero_badge": "Knowledge for Diversity",
   "hero_title": "Where every child is known",
-  "hero_subtitle": "A small CBC primary school in Njomoko, Thika — giving children the attention, values, and foundation they need to thrive.",
+  "hero_subtitle": "A small CBC primary school in Jomoko, Thika — also serving Njomoko. Giving children the attention, values, and foundation they need to thrive.",
   "cta_text": "Book a Visit",
   "phone": "+254 727 345 438",
   "email": "graciousloveacademy23@gmail.com",
   "whatsapp_link": "https://wa.me/254727345438",
   "trust_items": [
     { "icon": "fa-calendar-alt", "title": "Established 2023", "text": "A new school with clear values" },
-    { "icon": "fa-map-marker-alt", "title": "Njomoko, Thika", "text": "Near Kingdom Seekers Church" },
+    { "icon": "fa-map-marker-alt", "title": "Jomoko, Thika", "text": "Near Njomoko / Kingdom Seekers Church" },
     { "icon": "fa-book-open", "title": "Kenyan CBC", "text": "PP1 through Grade 6" },
     { "icon": "fa-users", "title": "Small classes", "text": "Teachers who know each child" }
   ],
