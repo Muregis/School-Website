@@ -1,4 +1,4 @@
-import { checkAuth, getCookie, corsHeaders, inMemoryStore } from '../_utils.js';
+import { checkAuth, getCookie, corsHeaders, inMemoryStore, getKV } from '../_utils.js';
 
 export default async function handler(request, response) {
   const cors = corsHeaders();
@@ -23,11 +23,11 @@ export default async function handler(request, response) {
         const expiresAt = Date.now() + (86400 * 1000);
         
         try {
-          const kv = await (await import('@vercel/kv')).kv;
+          const kv = await getKV();
           if (kv) {
             await kv.set(`session:${sessionId}`, 'active', { ex: 86400 });
           } else {
-            throw new Error('KV not available');
+            inMemoryStore.set(`session:${sessionId}`, { expires: expiresAt });
           }
         } catch {
           inMemoryStore.set(`session:${sessionId}`, { expires: expiresAt });
@@ -60,7 +60,7 @@ export default async function handler(request, response) {
     const sessionId = getCookie(request, 'admin_session');
     if (sessionId) {
       try {
-        const kv = await (await import('@vercel/kv')).kv;
+        const kv = await getKV();
         if (kv) {
           await kv.del(`session:${sessionId}`);
         }

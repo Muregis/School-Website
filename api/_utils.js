@@ -5,14 +5,24 @@ async function getKV() {
   if (kvAvailable === null) {
     try {
       const mod = await import('@vercel/kv');
-      kvAvailable = mod.kv;
-      return mod.kv;
+      kvAvailable = mod.kv || mod.default?.kv || mod.default || null;
+      return kvAvailable;
     } catch {
       kvAvailable = false;
       return null;
     }
   }
   return kvAvailable || null;
+}
+
+export function getCookie(request, name) {
+  const cookieHeader = request.headers.get('cookie');
+  if (!cookieHeader) return null;
+  const cookies = cookieHeader.split(';').map(c => c.trim().split('='));
+  for (const [key, value] of cookies) {
+    if (key === name) return decodeURIComponent(value);
+  }
+  return null;
 }
 
 export async function checkAuth(request) {
@@ -50,7 +60,7 @@ export async function getContent(key, fallbackPath) {
     const kv = await getKV();
     if (kv) {
       const data = await kv.get(key);
-      if (data) return data;
+      if (data !== null && data !== undefined) return data;
     }
   } catch {}
   

@@ -1,4 +1,3 @@
-import { kv } from '@vercel/kv';
 import { checkAuth, getContent, setContent, corsHeaders } from '../_utils.js';
 
 export default async function handler(request, response) {
@@ -39,7 +38,7 @@ export default async function handler(request, response) {
       } else {
         response.status = 500;
         response.setHeader('Content-Type', 'application/json');
-        return response.end(JSON.stringify({ error: 'Failed to save. KV may not be configured.' }));
+        return response.end(JSON.stringify({ error: 'Failed to save.' }));
       }
     } catch {
       response.status = 400;
