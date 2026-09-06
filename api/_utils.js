@@ -1,4 +1,4 @@
-const inMemoryStore = new Map();
+let inMemoryStore = new Map();
 
 export function getCookie(request, name) {
   const cookieHeader = request.headers.get('cookie');
@@ -23,15 +23,6 @@ export async function checkAuth(request) {
   return true;
 }
 
-export async function requireAuth(request, response) {
-  const authorized = await checkAuth(request);
-  if (!authorized) {
-    response.status = 401;
-    return { error: 'Unauthorized' };
-  }
-  return null;
-}
-
 export async function getContent(key, fallbackPath) {
   const memData = inMemoryStore.get(key);
   if (memData) return JSON.parse(memData);
@@ -51,13 +42,3 @@ export async function setContent(key, value) {
   inMemoryStore.set(key, JSON.stringify(value));
   return true;
 }
-
-export function corsHeaders() {
-  return {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-  };
-}
-
-export { inMemoryStore };
