@@ -1,4 +1,4 @@
-import { checkAuth, getContent, setContent } from '../../_utils.js';
+import { checkAuth, getContent, setContent } from '../_utils.js';
 
 export async function GET(request) {
   const data = await getContent('content:team', 'content/team/_index.json');
