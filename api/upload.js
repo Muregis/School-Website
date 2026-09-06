@@ -18,39 +18,24 @@ export default async function handler(request, response) {
         return response.end(JSON.stringify({ error: 'No file uploaded' }));
       }
       
-      const cloudName = process.env.CLOUDINARY_CLOUD_NAME;
-      const uploadPreset = process.env.CLOUDINARY_UPLOAD_PRESET;
+      const arrayBuffer = await file.arrayBuffer();
+      const buffer = Buffer.from(arrayBuffer);
       
-      if (!cloudName || !uploadPreset) {
-        response.status = 500;
+      if (buffer.length > 5 * 1024 * 1024) {
+        response.status = 400;
         response.setHeader('Content-Type', 'application/json');
-        return response.end(JSON.stringify({ error: 'Cloudinary not configured on server' }));
+        return response.end(JSON.stringify({ error: 'Image too large. Please use images under 5MB.' }));
       }
       
-      const cloudinaryForm = new FormData();
-      cloudinaryForm.append('file', file);
-      cloudinaryForm.append('upload_preset', uploadPreset);
+      const base64 = buffer.toString('base64');
+      const dataUrl = `data:${file.type};base64,${base64}`;
       
-      const cloudinaryRes = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
-        method: 'POST',
-        body: cloudinaryForm,
-      });
-      
-      if (!cloudinaryRes.ok) {
-        const errorText = await cloudinaryRes.text();
-        response.status = 500;
-        response.setHeader('Content-Type', 'application/json');
-        return response.end(JSON.stringify({ error: 'Upload failed', details: errorText }));
-      }
-      
-      const result = await cloudinaryRes.json();
       response.status = 200;
       response.setHeader('Content-Type', 'application/json');
       return response.end(JSON.stringify({ 
-        url: result.secure_url,
-        publicId: result.public_id,
-        width: result.width,
-        height: result.height
+        url: dataUrl,
+        size: buffer.length,
+        type: file.type
       }));
     } catch {
       response.status = 500;
