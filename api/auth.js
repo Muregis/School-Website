@@ -1,63 +1,67 @@
-import { checkAuth, getCookie, corsHeaders, inMemoryStore } from '../_utils.js';
-
-export default async function handler(request, response) {
-  const cors = corsHeaders();
-  
-  if (request.method === 'OPTIONS') {
-    response.status = 200;
-    response.setHeader('Access-Control-Allow-Origin', '*');
-    response.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-    response.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-    return response.end();
-  }
-  
-  if (request.method === 'POST') {
-    try {
-      const body = await request.json();
-      const { password } = body;
+export default async function handler(request) {
+  try {
+    if (request.method === 'OPTIONS') {
+      return new Response(null, {
+        status: 200,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+          'Access-Control-Allow-Headers': 'Content-Type'
+        }
+      });
+    }
+    
+    if (request.method === 'POST') {
+      let body = {};
+      try {
+        body = await request.json();
+      } catch {
+        body = {};
+      }
+      const password = body && typeof body === 'object' ? body.password : undefined;
       
       const adminPassword = process.env.ADMIN_PASSWORD || 'admin2026';
       
-      if (password === adminPassword) {
-        const sessionId = `${Date.now()}-${Math.random().toString(36).substring(2)}`;
-        const expiresAt = Date.now() + (86400 * 1000);
-        
-        inMemoryStore.set(`session:${sessionId}`, { expires: expiresAt });
-        
-        response.setHeader('Set-Cookie', `admin_session=${sessionId}; Path=/; HttpOnly; SameSite=Strict; Max-Age=86400`);
-        response.status = 200;
-        response.setHeader('Content-Type', 'application/json');
-        return response.end(JSON.stringify({ success: true }));
-      } else {
-        response.status = 401;
-        response.setHeader('Content-Type', 'application/json');
-        return response.end(JSON.stringify({ error: 'Invalid password' }));
+      if (!password || password !== adminPassword) {
+        return new Response(JSON.stringify({ error: 'Invalid password' }), {
+          status: 401,
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*'
+          }
+        });
       }
-    } catch {
-      response.status = 400;
-      response.setHeader('Content-Type', 'application/json');
-      return response.end(JSON.stringify({ error: 'Bad request' }));
+      
+      const sessionId = Date.now().toString() + '-' + Math.random().toString(36).substring(2);
+      
+      return new Response(JSON.stringify({ success: true, sessionId }), {
+        status: 200,
+        headers: {
+          'Content-Type': 'application/json',
+          'Set-Cookie': `admin_session=${sessionId}; Path=/; HttpOnly; SameSite=Strict; Max-Age=86400`,
+          'Access-Control-Allow-Origin': '*'
+        }
+      });
     }
+    
+    return new Response(JSON.stringify({ error: 'Method not allowed' }), {
+      status: 405,
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      }
+    });
+  } catch (error) {
+    console.error('Auth error:', error);
+    return new Response(JSON.stringify({ 
+      error: 'Server error',
+      details: error.message 
+    }), {
+      status: 500,
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      }
+    });
   }
-  
-  if (request.method === 'GET') {
-    const authorized = await checkAuth(request);
-    response.status = authorized ? 200 : 401;
-    response.setHeader('Content-Type', 'application/json');
-    return response.end(JSON.stringify({ authenticated: authorized }));
-  }
-  
-  if (request.method === 'DELETE') {
-    const sessionId = getCookie(request, 'admin_session');
-    if (sessionId) {
-      inMemoryStore.delete(`session:${sessionId}`);
-    }
-    response.setHeader('Set-Cookie', 'admin_session=; Path=/; HttpOnly; SameSite=Strict; Max-Age=0');
-    response.status = 200;
-    response.setHeader('Content-Type', 'application/json');
-    return response.end(JSON.stringify({ success: true }));
-  }
-  
-  response.status = 405;
-  return response.end(JSON.stringify({ error: 'Method not allowed' }));
 }
