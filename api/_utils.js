@@ -1,4 +1,24 @@
-let inMemoryStore = new Map();
+import crypto from 'crypto';
+
+function signSession(data, secret) {
+  const payload = Buffer.from(JSON.stringify(data)).toString('base64url');
+  const signature = crypto.createHmac('sha256', secret).update(payload).digest('base64url');
+  return `${payload}.${signature}`;
+}
+
+function verifySession(token, secret) {
+  try {
+    const [payload, signature] = token.split('.');
+    if (!payload || !signature) return null;
+    const expected = crypto.createHmac('sha256', secret).update(payload).digest('base64url');
+    if (signature !== expected) return null;
+    const data = JSON.parse(Buffer.from(payload, 'base64url').toString());
+    if (Date.now() > data.expires) return null;
+    return data;
+  } catch {
+    return null;
+  }
+}
 
 export function getCookie(request, name) {
   const cookieHeader = request.headers.get('cookie');
@@ -10,23 +30,16 @@ export function getCookie(request, name) {
   return null;
 }
 
-export async function checkAuth(request) {
+export function checkAuth(request) {
   const sessionId = getCookie(request, 'admin_session');
   if (!sessionId) return false;
   
-  const mem = inMemoryStore.get(`session:${sessionId}`);
-  if (!mem) return false;
-  if (Date.now() > mem.expires) {
-    inMemoryStore.delete(`session:${sessionId}`);
-    return false;
-  }
-  return true;
+  const secret = process.env.ADMIN_PASSWORD || 'admin2026';
+  const session = verifySession(sessionId, secret);
+  return !!session;
 }
 
 export async function getContent(key, fallbackPath) {
-  const memData = inMemoryStore.get(key);
-  if (memData) return JSON.parse(memData);
-  
   try {
     const fs = await import('fs');
     const path = await import('path');
@@ -38,7 +51,25 @@ export async function getContent(key, fallbackPath) {
   }
 }
 
+const contentPaths = {
+  'content:settings': 'content/settings.json',
+  'content:team': 'content/team/_index.json',
+  'content:news': 'content/news/_index.json',
+  'content:gallery': 'content/gallery/_index.json',
+  'content:events': 'content/events/term-dates.json',
+};
+
 export async function setContent(key, value) {
-  inMemoryStore.set(key, JSON.stringify(value));
-  return true;
+  const fallbackPath = contentPaths[key];
+  if (!fallbackPath) return false;
+  
+  try {
+    const fs = await import('fs');
+    const path = await import('path');
+    const filePath = path.join(process.cwd(), fallbackPath);
+    fs.writeFileSync(filePath, JSON.stringify(value, null, 2));
+    return true;
+  } catch {
+    return false;
+  }
 }

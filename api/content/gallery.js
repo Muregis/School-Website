@@ -9,7 +9,7 @@ export async function GET(request) {
 }
 
 export async function POST(request) {
-  const authorized = await checkAuth(request);
+  const authorized = checkAuth(request);
   if (!authorized) {
     return new Response(JSON.stringify({ error: 'Unauthorized' }), {
       status: 401,

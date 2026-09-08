@@ -19,13 +19,15 @@ export async function POST(request) {
       });
     }
     
-    const sessionId = Date.now().toString() + '-' + Math.random().toString(36).substring(2);
+    const sessionData = { expires: Date.now() + (86400 * 1000) };
+    const secret = process.env.ADMIN_PASSWORD || 'admin2026';
+    const sessionId = signSession(sessionData, secret);
     
-    return new Response(JSON.stringify({ success: true, sessionId }), {
+    return new Response(JSON.stringify({ success: true }), {
       status: 200,
       headers: {
         'Content-Type': 'application/json',
-        'Set-Cookie': `admin_session=${sessionId}; Path=/; HttpOnly; SameSite=Strict; Max-Age=86400`,
+        'Set-Cookie': `admin_session=${sessionId}; Path=/; HttpOnly; Max-Age=86400`,
         'Access-Control-Allow-Origin': '*'
       }
     });
@@ -39,8 +41,18 @@ export async function POST(request) {
 }
 
 export async function DELETE(request) {
-  return new Response(JSON.stringify({ error: 'Method not allowed' }), {
-    status: 405,
-    headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
+  return new Response(JSON.stringify({ success: true }), {
+    status: 200,
+    headers: {
+      'Content-Type': 'application/json',
+      'Set-Cookie': 'admin_session=; Path=/; HttpOnly; Max-Age=0',
+      'Access-Control-Allow-Origin': '*'
+    }
   });
+}
+
+function signSession(data, secret) {
+  const payload = Buffer.from(JSON.stringify(data)).toString('base64url');
+  const signature = crypto.createHmac('sha256', secret).update(payload).digest('base64url');
+  return `${payload}.${signature}`;
 }
