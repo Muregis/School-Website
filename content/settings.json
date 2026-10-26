@@ -1,18 +1,30 @@
 {
-  "hero_badge": "Knowledge for Diversity",
-  "hero_title": "Where every child is known",
-  "hero_subtitle": "A small CBC primary school in Jomoko, Thika — also serving Njomoko. Giving children the attention, values, and foundation they need to thrive.",
-  "cta_text": "Book a Visit",
+  "school_name": "Gracious Love Academy",
+  "hero_badge": "Knowledge for Diversity • Est. 2023",
+  "hero_title": "Where Every Child is Known, Valued & Nurtured to Excel",
+  "hero_subtitle": "A premier CBC primary school in Jomoko, Thika — proudly serving Jomoko and Njomoko communities. Providing small classes, dedicated Christian moral values, and an inspiring foundation for lifelong success.",
+  "cta_text": "Book a School Tour",
   "phone": "+254 727 345 438",
+  "alt_phone_1": "+254 721 983 847",
+  "alt_phone_2": "+254 720 986 802",
   "email": "graciousloveacademy23@gmail.com",
-  "whatsapp_link": "https://wa.me/254727345438",
+  "postal_address": "P.O. Box 377-00518, Nairobi / Thika, Kenya",
+  "physical_location": "Jomoko, near Kingdom Seekers Church, behind SK Suites, Thika — serving Jomoko & Njomoko",
+  "whatsapp_number": "254727345438",
+  "whatsapp_link": "https://wa.me/254727345438?text=Hello%20Gracious%20Love%20Academy%2C%20I%20would%20like%20to%20inquire%20about%202026%20admissions%20and%20fees.",
+  "whatsapp_fees_link": "https://wa.me/254727345438?text=Hello%20Gracious%20Love%20Academy%2C%20please%20send%20me%20the%20official%202026%20fee%20structure%20and%20payment%20plan%20details.",
+  "bank_details": {
+    "bank": "Equity Bank",
+    "account_number": "0650193132285",
+    "account_name": "Gracious Love Academy"
+  },
   "trust_items": [
-    { "icon": "fa-calendar-alt", "title": "Established 2023", "text": "A new school with clear values" },
-    { "icon": "fa-map-marker-alt", "title": "Jomoko, Thika", "text": "Near Njomoko / Kingdom Seekers Church" },
-    { "icon": "fa-book-open", "title": "Kenyan CBC", "text": "PP1 through Grade 6" },
-    { "icon": "fa-users", "title": "Small classes", "text": "Teachers who know each child" }
+    { "icon": "fa-certificate", "title": "MoE Registered", "text": "Approved Kenyan CBC curriculum from PP1 to Grade 6" },
+    { "icon": "fa-users", "title": "Max 18 Pupils/Class", "text": "Personalized attention so no child is ever left behind" },
+    { "icon": "fa-heart", "title": "Values & Character", "text": "Strong moral, Christian, and leadership foundations" },
+    { "icon": "fa-van-shuttle", "title": "Safe Transport", "text": "Reliable school van routes in Jomoko, Njomoko & Thika" }
   ],
   "max_class_size": "18",
-  "registration_status": "Registered with the Ministry of Education, Kenya",
-  "curriculum_alignment": "Competency Based Curriculum (CBC) as approved by KICD"
+  "registration_status": "Fully Registered with the Ministry of Education, Kenya",
+  "curriculum_alignment": "Competency Based Curriculum (CBC) approved by KICD"
 }

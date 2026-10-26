@@ -1,18 +1,70 @@
 {
-  "term1_start": "January 2026",
-  "term1_end": "April 2026",
-  "term2_start": "May 2026",
-  "term2_end": "August 2026",
-  "term3_start": "September 2026",
-  "term3_end": "November 2026",
-  "open_day": "Saturday, 10:00 AM – 1:00 PM",
-  "registration": "Ongoing",
+  "academic_year": "2026",
+  "ministry_aligned": true,
+  "term1_name": "Term 1 (13 Weeks)",
+  "term1_start": "5th January 2026",
+  "term1_end": "1st April 2026",
+  "term1_halfterm": "25th February – 1st March 2026",
+  "term2_name": "Term 2 (14 Weeks)",
+  "term2_start": "27th April 2026",
+  "term2_end": "31st July 2026",
+  "term2_halfterm": "24th June – 28th June 2026",
+  "term3_name": "Term 3 (9 Weeks)",
+  "term3_start": "24th August 2026",
+  "term3_end": "3rd October 2026",
+  "cbc_assessment": "26th October – 29th October 2026",
+  "open_day": "Every Saturday 9:00 AM – 1:00 PM & Weekdays by Appointment",
+  "registration": "Ongoing for Play Group, PP1, PP2 & Grades 1–6",
   "events": [
-    { "date": "2026-02-15", "title": "Term 1 Open Day", "description": "Tour the school, meet teachers, and ask questions." },
-    { "date": "2026-04-10", "title": "Term 1 Closing", "description": "Last day of Term 1. Reports issued." },
-    { "date": "2026-05-05", "title": "Term 2 Begins", "description": "First day of Term 2." },
-    { "date": "2026-08-21", "title": "Term 2 Closing", "description": "Last day of Term 2." },
-    { "date": "2026-09-07", "title": "Term 3 Begins", "description": "First day of Term 3." },
-    { "date": "2026-11-20", "title": "End of Year Celebration", "description": "Graduation and awards ceremony." }
+    {
+      "date": "2026-01-05",
+      "title": "Term 1 School Opening",
+      "description": "Welcoming all returning pupils and new admissions for the 2026 academic year."
+    },
+    {
+      "date": "2026-02-14",
+      "title": "Mid-Term Parent-Teacher Consultation",
+      "description": "One-on-one progress review between parents and class teachers."
+    },
+    {
+      "date": "2026-02-25",
+      "title": "Term 1 Half-Term Break",
+      "description": "Ministry of Education scheduled mid-term recess (resumes 2nd March)."
+    },
+    {
+      "date": "2026-04-01",
+      "title": "Term 1 Closing & Report Day",
+      "description": "Issuance of holistic CBC term progress portfolios and holiday assignments."
+    },
+    {
+      "date": "2026-04-27",
+      "title": "Term 2 Opening Day",
+      "description": "Commencement of second term academic and co-curricular programs."
+    },
+    {
+      "date": "2026-06-24",
+      "title": "Term 2 Half-Term Recess",
+      "description": "Scheduled break for rest and parent check-ins (resumes 29th June)."
+    },
+    {
+      "date": "2026-07-31",
+      "title": "Term 2 Closing & Exhibition",
+      "description": "Pupil creative arts, project showcases, and end-of-term evaluations."
+    },
+    {
+      "date": "2026-08-24",
+      "title": "Term 3 Opening Day",
+      "description": "Final term of the year focusing on consolidation and assessments."
+    },
+    {
+      "date": "2026-10-26",
+      "title": "National CBC Assessments (KPSEA)",
+      "description": "Ministry of Education KPSEA summative assessments for candidate learners."
+    },
+    {
+      "date": "2026-11-20",
+      "title": "Annual Graduation & Prize Giving Day",
+      "description": "Colorful ceremony celebrating PP2 graduates and recognizing outstanding student growth."
+    }
   ]
 }

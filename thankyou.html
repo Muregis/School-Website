@@ -3,148 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thank You — Message Sent | Gracious Love Academy</title>
-    <meta name="description" content="Your message has been sent to Gracious Love Academy. We will get back to you within 24 hours. For immediate assistance, call +254 727 345 438.">
+    <title>Thank You &bull; Inquiry Received | Gracious Love Academy</title>
     <meta name="robots" content="noindex, follow">
-    <link rel="canonical" href="https://graciousloveacademy-school-website.vercel.app/thankyou.html">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" />
     <link rel="stylesheet" href="css/style.css">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://graciousloveacademy-school-website.vercel.app/thankyou.html">
-    <meta property="og:title" content="Thank You — Message Sent | Gracious Love Academy">
-    <meta property="og:description" content="Your message has been sent. We will get back to you within 24 hours.">
-    <meta property="og:image" content="https://graciousloveacademy-school-website.vercel.app/images/hero-bg.jpeg">
-    <meta property="og:image:alt" content="Students at Gracious Love Academy in Thika">
-    <meta property="og:site_name" content="Gracious Love Academy">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:url" content="https://graciousloveacademy-school-website.vercel.app/thankyou.html">
-    <meta name="twitter:title" content="Thank You — Message Sent | Gracious Love Academy">
-    <meta name="twitter:description" content="Your message has been sent. We will get back to you within 24 hours.">
-    <meta name="twitter:image" content="https://graciousloveacademy-school-website.vercel.app/images/hero-bg.jpeg">
-    <meta name="twitter:image:alt" content="Students at Gracious Love Academy in Thika">
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebPage",
-        "name": "Thank You — Message Sent",
-        "description": "Your message has been sent to Gracious Love Academy.",
-        "url": "https://graciousloveacademy-school-website.vercel.app/thankyou.html"
-    }
-    </script>
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-            {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Home",
-                "item": "https://graciousloveacademy-school-website.vercel.app/"
-            },
-            {
-                "@type": "ListItem",
-                "position": 2,
-                "name": "Thank You",
-                "item": "https://graciousloveacademy-school-website.vercel.app/thankyou.html"
-            }
-        ]
-    }
-    </script>
     <style>
-        .thankyou-section {
-            min-height: 100vh;
+        .thankyou-wrap {
+            min-height: 80vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 100px 24px;
-            background-color: var(--cream);
+            padding: 80px 24px;
+            background: linear-gradient(135deg, var(--cream-50) 0%, var(--cream-100) 100%);
         }
-        .thankyou-content {
-            max-width: 520px;
+        .thankyou-card {
+            background: #ffffff;
+            border-radius: var(--radius-xl);
+            padding: 56px 48px;
+            max-width: 580px;
+            width: 100%;
             text-align: center;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-xl);
         }
-        .thankyou-icon {
-            width: 80px;
-            height: 80px;
+        .thankyou-badge-icon {
+            width: 84px;
+            height: 84px;
+            border-radius: 50%;
+            background: var(--emerald-light);
+            color: var(--emerald);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 32px;
-            background: rgba(107, 143, 113, 0.1);
-            color: var(--sage);
             font-size: 2.5rem;
-            border-radius: 50%;
-        }
-        .thankyou-content h1 {
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--navy);
-            margin-bottom: 16px;
-        }
-        .thankyou-content p {
-            font-size: 1.0625rem;
-            color: var(--charcoal);
-            margin-bottom: 12px;
-            line-height: 1.7;
-        }
-        .thankyou-box {
-            background: var(--warm-white);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-md);
-            padding: 24px;
-            margin: 32px 0;
-            text-align: left;
-        }
-        .thankyou-box strong {
-            display: block;
-            font-weight: 700;
-            color: var(--navy);
-            margin-bottom: 8px;
-        }
-        .thankyou-box a {
-            color: var(--terracotta);
-            font-weight: 600;
+            margin: 0 auto 28px auto;
+            border: 3px solid rgba(27, 122, 67, 0.2);
         }
     </style>
 </head>
 <body>
-    <nav class="navbar">
+    <header class="navbar">
         <div class="container">
             <div class="nav-container">
                 <a href="index.html" class="logo">
-                    <i class="fas fa-graduation-cap"></i>
-                    <span>Gracious Love Academy</span>
+                    <img src="images/logo.svg" alt="Crest" class="logo-crest">
+                    <div class="logo-text">
+                        <span class="logo-name">Gracious Love Academy</span>
+                        <span class="logo-tagline">CBC Primary School &bull; Jomoko, Thika</span>
+                    </div>
                 </a>
+                <a href="index.html" class="btn btn-secondary btn-sm"><i class="fas fa-arrow-left"></i> Return Home</a>
             </div>
         </div>
-    </nav>
+    </header>
 
-    <section class="thankyou-section">
-        <div class="thankyou-content">
-            <div class="thankyou-icon">
+    <main class="thankyou-wrap">
+        <div class="thankyou-card">
+            <div class="thankyou-badge-icon">
                 <i class="fas fa-check"></i>
             </div>
-            <h1>Thank you</h1>
-            <p>Your message has been sent successfully. We will get back to you within 24 hours.</p>
-            <div class="thankyou-box">
-                <strong>Need immediate assistance?</strong>
-                <p>Call or WhatsApp us: <a href="tel:+254727345438">+254 727 345 438</a></p>
-                <p style="margin-top: 8px;">Office hours: Monday – Friday, 8:00 AM – 5:00 PM</p>
-            </div>
-            <a href="index.html" class="btn btn-primary">Back to Homepage</a>
-        </div>
-    </section>
+            <span class="section-tag" style="background: var(--emerald-light); color: var(--emerald-dark); border-color: rgba(27,122,67,0.3); margin-bottom: 12px;">
+                <i class="fas fa-shield-alt"></i> Submission Confirmed
+            </span>
+            <h1 style="font-size: 2.2rem; color: var(--navy-900); margin-bottom: 16px;">Thank You for Reaching Out</h1>
+            <p style="font-size: 1.05rem; color: var(--slate-600); line-height: 1.7; margin-bottom: 32px;">
+                We have received your school visit inquiry. Our Headteacher or Admissions Coordinator will contact you shortly to confirm your visit date and address any questions you have.
+            </p>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-bottom">
-                <p>&copy; 2026 Gracious Love Academy. All rights reserved.</p>
+            <div style="background: var(--cream-100); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 24px; text-align: left; margin-bottom: 32px;">
+                <strong style="color: var(--navy-900); display: block; font-size: 1rem; margin-bottom: 8px;">
+                    <i class="fas fa-bolt" style="color: var(--gold-500);"></i> Need Instant Assistance?
+                </strong>
+                <p style="font-size: 0.9375rem; color: var(--slate-600); margin-bottom: 12px;">
+                    You can chat directly with our Admissions Office on WhatsApp or give us a direct phone call:
+                </p>
+                <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                    <a href="https://wa.me/254727345438?text=Hello%20Gracious%20Love%20Academy%2C%20I%20just%20submitted%20a%20visit%20inquiry%20on%20your%20website." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-sm">
+                        <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                    </a>
+                    <a href="tel:+254727345438" class="btn btn-secondary btn-sm">
+                        <i class="fas fa-phone-alt"></i> Call +254 727 345 438
+                    </a>
+                </div>
             </div>
+
+            <a href="index.html" class="btn btn-primary btn-block btn-lg">
+                <i class="fas fa-home"></i> Back to Academy Homepage
+            </a>
+        </div>
+    </main>
+
+    <footer class="footer" style="padding: 32px 0;">
+        <div class="container" style="text-align: center;">
+            <p style="color: #64748b; font-size: 0.875rem;">&copy; 2026 Gracious Love Academy. Registered with Ministry of Education, Kenya.</p>
         </div>
     </footer>
 </body>

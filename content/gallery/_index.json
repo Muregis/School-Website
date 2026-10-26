@@ -1,50 +1,86 @@
 [
   {
-    "image": "images/gallery-1.jpeg",
-    "alt": "Students doing morning exercises at Gracious Love Academy",
-    "category": "Events",
-    "caption": "Morning Exercises"
-  },
-  {
-    "image": "images/gallery-2.jpeg",
-    "alt": "Group activities and teamwork at Gracious Love Academy",
-    "category": "Play",
-    "caption": "Group Activities"
-  },
-  {
-    "image": "images/gallery-3.jpeg",
-    "alt": "School assembly at Gracious Love Academy Jomoko",
-    "category": "Events",
-    "caption": "School Assembly"
-  },
-  {
     "image": "images/gallery-4.jpeg",
-    "alt": "Graduation ceremony at Gracious Love Academy Thika",
-    "category": "Events",
-    "caption": "Graduation Day"
+    "alt": "PP2 Graduation Ceremony Certificate Award at Gracious Love Academy",
+    "category": "Graduation",
+    "caption": "PP2 Graduation Ceremony & Certificate Award"
   },
   {
-    "image": "images/gallery-5.jpeg",
-    "alt": "Outdoor learning activities for CBC students in Thika",
-    "category": "Outdoor",
-    "caption": "Outdoor Activities"
+    "image": "images/gallery-13.jpeg",
+    "alt": "Annual educational trip and poolside picnic for pupils of Gracious Love Academy",
+    "category": "Excursions",
+    "caption": "Annual School Excursion & Picnic by the Pool"
   },
   {
-    "image": "images/gallery-6.jpeg",
-    "alt": "Playground time at Gracious Love Academy primary school",
-    "category": "Play",
-    "caption": "Playground Time"
-  },
-  {
-    "image": "images/gallery-7.jpeg",
-    "alt": "Physical education lesson at Gracious Love Academy",
-    "category": "Classroom",
-    "caption": "Physical Education"
+    "image": "images/gallery-1.jpeg",
+    "alt": "Early Years class with their caring teacher at Gracious Love Academy",
+    "category": "Early Years",
+    "caption": "PP1 & PP2 Class with Dedicated Class Teacher"
   },
   {
     "image": "images/gallery-8.jpeg",
-    "alt": "Class photo of students at Gracious Love Academy Thika",
+    "alt": "Pupils in smart academy school uniform at Gracious Love Academy Jomoko Thika",
     "category": "Classroom",
-    "caption": "Class Photo"
+    "caption": "Lower Primary Students in Official Academy Uniform"
+  },
+  {
+    "image": "images/gallery-10.jpeg",
+    "alt": "Pupils having fun at the indoor trampoline and ball pit adventure park",
+    "category": "Excursions",
+    "caption": "Indoor Adventure Park & Trampoline Excursion"
+  },
+  {
+    "image": "images/gallery-14.jpeg",
+    "alt": "Teacher and students enjoying the playground horse train ride at Gracious Love Academy",
+    "category": "Early Years",
+    "caption": "Playground Adventure on the Horse Train with Teacher"
+  },
+  {
+    "image": "images/gallery-12.jpeg",
+    "alt": "Pupils engaging in physical education with hula-hoops at Gracious Love Academy",
+    "category": "Sports",
+    "caption": "Outdoor Physical Education & Coordination Drills"
+  },
+  {
+    "image": "images/gallery-6.jpeg",
+    "alt": "Headteacher Mrs. Grace Muthoni delivering the graduation address in full academic regalia",
+    "category": "Graduation",
+    "caption": "Headteacher Mrs. Grace Muthoni Blessing the Graduates"
+  },
+  {
+    "image": "images/gallery-3.jpeg",
+    "alt": "Graduation day assembly and student procession at Gracious Love Academy",
+    "category": "Graduation",
+    "caption": "Graduation Day Student Assembly & Presentation"
+  },
+  {
+    "image": "images/gallery-2.jpeg",
+    "alt": "PP2 graduating class presenting their graduation song and recitation",
+    "category": "Graduation",
+    "caption": "PP2 Class Graduation Recitation & Choral Verse"
+  },
+  {
+    "image": "images/gallery-11.jpeg",
+    "alt": "Children exploring and playing in the colorful ball pit",
+    "category": "Early Years",
+    "caption": "Early Years Sensory Play in the Ball Pit"
+  },
+  {
+    "image": "images/gallery-7.jpeg",
+    "alt": "Graduation procession and parent celebration at Gracious Love Academy",
+    "category": "Graduation",
+    "caption": "PP2 Graduates Reciting the School Creed"
+  },
+  {
+    "image": "images/gallery-5.jpeg",
+    "alt": "Parents, teachers and pupils celebrating graduation day at the Academy",
+    "category": "Graduation",
+    "caption": "Graduation Day Celebrations with Parents & Community"
+  },
+  {
+    "image": "images/gallery-9.jpeg",
+    "alt": "Morning exercises and physical fitness drills in the school quad",
+    "category": "Sports",
+    "caption": "Morning Physical Warm-ups & Fitness Drills"
   }
 ]

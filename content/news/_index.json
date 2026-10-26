@@ -1,26 +1,34 @@
 [
   {
-    "title": "PP2 Graduation Ceremony 2026",
+    "title": "PP2 Graduation Ceremony 2026: Celebrating Our Young Achievers",
     "date": "2026-03-15",
     "image": "images/news/pp2-graduation.jpg",
     "slug": "pp2-graduation-2026",
-    "excerpt": "Our PP2 class celebrated their graduation today with songs, dances, and a special certificate ceremony.",
-    "body": "Our PP2 class celebrated their graduation today with songs, dances, and a special certificate ceremony. Each child received a certificate and a small gift from their teacher, Mr. Kamau. It was a proud moment for parents and teachers alike.\n\nCongratulations to all our graduates! You are ready for Grade 1."
+    "excerpt": "Our PP2 graduating class celebrated their milestone in colorful academic gowns with choral verses, certificate presentations, and family blessings.",
+    "body": "Our PP2 graduating class marked a wonderful milestone today in our annual graduation ceremony! Dressed in full academic gowns, the pupils performed heartwarming recitations, choral verses, and songs for an audience of proud parents and guardians.\n\nHeadteacher Mrs. Grace Muthoni personally presented each graduate with their certificate of completion and a special gift, commending their growth in literacy, numeracy, and character.\n\nCongratulations to our bright class! They are thoroughly prepared, confident, and eager to step into Grade 1."
   },
   {
-    "title": "New Playground Equipment Installed",
+    "title": "Exciting School Trip: Annual Excursion & Poolside Picnic",
+    "date": "2026-03-02",
+    "image": "images/news/excursion.jpg",
+    "slug": "annual-school-excursion-2026",
+    "excerpt": "Pupils enjoyed an unforgettable outdoor excursion complete with scenic gardens, recreational play, and a communal lunch picnic by the pool.",
+    "body": "At Gracious Love Academy, we believe learning extends far beyond classroom walls. Our pupils participated in an unforgettable excursion day featuring guided nature walks, recreational games, and a joyful communal picnic.\n\nActivities like this strengthen social bonding, encourage teamwork, and create cherished memories that inspire children throughout their school journey."
+  },
+  {
+    "title": "Playground Upgrades & Safe Outdoor Learning Zones",
     "date": "2026-02-20",
     "image": "images/news/playground.jpg",
     "slug": "playground-2026",
-    "excerpt": "We are excited to share that our new playground equipment is now ready for use!",
-    "body": "We are excited to share that our new playground equipment is now ready for use! The children have been enjoying the new swings, slide, and climbing frame during break time.\n\nThank you to all parents who contributed to this upgrade. Safe play is an important part of our approach to learning."
+    "excerpt": "We have expanded our playground facilities with safe adventure equipment, slides, swings, and climbing sets to foster active, healthy physical play.",
+    "body": "We are delighted to announce that new recreational and physical education equipment has been installed on our campus! Pupils are loving the new adventure play sets, swings, and climbing frame.\n\nPhysical play is a vital cornerstone of Kenya's Competency-Based Curriculum (CBC), developing fine motor skills, coordination, and resilience."
   },
   {
-    "title": "Term 1 Open Day — Saturday 15th February",
+    "title": "Term 1 & Term 2 Open Days: Welcoming Prospective Families",
     "date": "2026-02-10",
     "image": "images/news/open-day.jpg",
     "slug": "open-day-feb-2026",
-    "excerpt": "We welcome all prospective parents to our Term 1 Open Day this Saturday.",
-    "body": "We welcome all prospective parents to our Term 1 Open Day this Saturday. Tour the school, meet our teachers, and see our classrooms in action.\n\nTime: 10:00 AM – 1:00 PM\nLocation: Jomoko, near Kingdom Seekers Church, Thika\n\nNo appointment needed. Just walk in or call ahead."
+    "excerpt": "Parents considering admission for PP1 through Grade 6 are invited to tour our classrooms, meet teachers, and experience our warm learning community.",
+    "body": "We warmly welcome all prospective parents from Jomoko, Njomoko, and the broader Thika community to our campus Open Days. Tour our facilities, meet our dedicated teachers, and see how our small class sizes make a difference.\n\nTime: Monday – Friday 8:00 AM – 4:00 PM | Saturdays 9:00 AM – 1:00 PM\nLocation: Jomoko, near Kingdom Seekers Church, behind SK Suites, Thika\n\nAdmissions are ongoing across all levels."
   }
 ]
