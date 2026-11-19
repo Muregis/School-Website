@@ -1,22 +1,35 @@
+# Gracious Love Academy - Robots Configuration (Optimized for Search Engines & AEO AI Crawlers)
 User-agent: *
 Allow: /
-Disallow: /images/
-Disallow: /css/
-Disallow: /js/
+Disallow: /admin/
+Disallow: /api/auth/
+Disallow: /api/upload/
 
-Sitemap: https://graciousloveacademy-school-website.vercel.app/sitemap.xml
-
+# Specific AI & Search Engine Agents
 User-agent: Googlebot
+Allow: /
+
+User-agent: Google-Extended
 Allow: /
 
 User-agent: Bingbot
 Allow: /
 
-User-agent: Baiduspider
+User-agent: GPTBot
 Allow: /
 
-User-agent: YandexBot
+User-agent: ChatGPT-User
 Allow: /
 
-User-agent: DuckDuckBot
+User-agent: PerplexityBot
 Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+# Sitemaps and LLM Discovery
+Sitemap: https://graciousloveacademy-school-website.vercel.app/sitemap.xml
+# LLMs Full Context: https://graciousloveacademy-school-website.vercel.app/llms.txt

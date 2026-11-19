@@ -45,7 +45,7 @@ This guide will show you how to add news, update photos, change term dates, and 
 
 1. Click **Team** in the left menu.
 2. Fill in the form at the top:
-   - **Full Name** — e.g. "Mrs. Grace Muthoni"
+   - **Full Name** — e.g. "Jane Doe"
    - **Role** — e.g. "Headteacher"
    - **Short Bio** — a short description (2–3 sentences)
    - **Years of Experience** — e.g. "12 years experience"

@@ -1,70 +1,80 @@
 {
-  "academic_year": "2026",
+  "academic_year": "2027",
   "ministry_aligned": true,
   "term1_name": "Term 1 (13 Weeks)",
-  "term1_start": "5th January 2026",
-  "term1_end": "1st April 2026",
-  "term1_halfterm": "25th February – 1st March 2026",
+  "term1_start": "4th January 2027",
+  "term1_end": "2nd April 2027",
+  "term1_halfterm": "24th February – 28th February 2027",
   "term2_name": "Term 2 (14 Weeks)",
-  "term2_start": "27th April 2026",
-  "term2_end": "31st July 2026",
-  "term2_halfterm": "24th June – 28th June 2026",
+  "term2_start": "26th April 2027",
+  "term2_end": "30th July 2027",
+  "term2_halfterm": "23rd June – 27th June 2027",
   "term3_name": "Term 3 (9 Weeks)",
-  "term3_start": "24th August 2026",
-  "term3_end": "3rd October 2026",
-  "cbc_assessment": "26th October – 29th October 2026",
-  "open_day": "Every Saturday 9:00 AM – 1:00 PM & Weekdays by Appointment",
-  "registration": "Ongoing for Play Group, PP1, PP2 & Grades 1–6",
+  "term3_start": "23rd August 2027",
+  "term3_end": "22nd October 2027",
+  "cbc_assessment": "25th October – 29th October 2027",
+  "open_day": "Every Saturday 9:00 AM – 1:00 PM & Weekdays for 2027 Intake",
+  "registration": "2027 Enrollment Active (Limited Slots Available per Grade)",
   "events": [
     {
-      "date": "2026-01-05",
-      "title": "Term 1 School Opening",
-      "description": "Welcoming all returning pupils and new admissions for the 2026 academic year."
-    },
-    {
-      "date": "2026-02-14",
-      "title": "Mid-Term Parent-Teacher Consultation",
-      "description": "One-on-one progress review between parents and class teachers."
-    },
-    {
-      "date": "2026-02-25",
-      "title": "Term 1 Half-Term Break",
-      "description": "Ministry of Education scheduled mid-term recess (resumes 2nd March)."
-    },
-    {
-      "date": "2026-04-01",
-      "title": "Term 1 Closing & Report Day",
-      "description": "Issuance of holistic CBC term progress portfolios and holiday assignments."
-    },
-    {
-      "date": "2026-04-27",
-      "title": "Term 2 Opening Day",
-      "description": "Commencement of second term academic and co-curricular programs."
-    },
-    {
-      "date": "2026-06-24",
-      "title": "Term 2 Half-Term Recess",
-      "description": "Scheduled break for rest and parent check-ins (resumes 29th June)."
-    },
-    {
-      "date": "2026-07-31",
-      "title": "Term 2 Closing & Exhibition",
-      "description": "Pupil creative arts, project showcases, and end-of-term evaluations."
-    },
-    {
-      "date": "2026-08-24",
-      "title": "Term 3 Opening Day",
-      "description": "Final term of the year focusing on consolidation and assessments."
-    },
-    {
-      "date": "2026-10-26",
-      "title": "National CBC Assessments (KPSEA)",
-      "description": "Ministry of Education KPSEA summative assessments for candidate learners."
-    },
-    {
       "date": "2026-11-20",
+      "title": "2027 Early Admissions & Registration Launch",
+      "description": "Enrollment opens for 2027 Play Group, PP1, PP2 and Grades 1–6. Early bird learner assessment."
+    },
+    {
+      "date": "2026-12-05",
+      "title": "2027 New Families Open Day & Campus Tour",
+      "description": "Guided walkthrough, meet the Headteacher, and uniform fittings for January 2027 intake."
+    },
+    {
+      "date": "2027-01-04",
+      "title": "Term 1 2027 Opening Day",
+      "description": "Welcome assembly and commencement of lessons for all pupils in the 2027 academic year."
+    },
+    {
+      "date": "2027-01-16",
+      "title": "2027 Parents Orientation & CBC Strategy Meeting",
+      "description": "Aligning parents and teachers on learner portfolio goals, homework policies, and school van timings."
+    },
+    {
+      "date": "2027-02-24",
+      "title": "Term 1 Half-Term Recess",
+      "description": "Mid-term recess scheduled per Ministry of Education guidelines (resumes 1st March 2027)."
+    },
+    {
+      "date": "2027-04-02",
+      "title": "Term 1 Closing & Report Portfolio Day",
+      "description": "Issuance of holistic CBC term progress portfolios and holiday enrichment guides."
+    },
+    {
+      "date": "2027-04-26",
+      "title": "Term 2 2027 Opening Day",
+      "description": "Resumption for Term 2 academic, sports, and creative arts curriculum."
+    },
+    {
+      "date": "2027-06-23",
+      "title": "Term 2 Half-Term Recess",
+      "description": "Scheduled mid-term break for rest and student assessments (resumes 28th June 2027)."
+    },
+    {
+      "date": "2027-07-30",
+      "title": "Term 2 Closing & Talent Showcase",
+      "description": "Exhibition of pupils' creative arts, science projects, and second term evaluation reports."
+    },
+    {
+      "date": "2027-08-23",
+      "title": "Term 3 2027 Opening Day",
+      "description": "Final term of the year focusing on curriculum consolidation and KPSEA preparation."
+    },
+    {
+      "date": "2027-10-25",
+      "title": "National KPSEA CBC Assessments",
+      "description": "Ministry of Education national summative assessments for candidate learners."
+    },
+    {
+      "date": "2027-11-19",
       "title": "Annual Graduation & Prize Giving Day",
-      "description": "Colorful ceremony celebrating PP2 graduates and recognizing outstanding student growth."
+      "description": "Festive celebration honoring PP2 graduates and recognizing outstanding academic and moral growth."
     }
   ]
 }

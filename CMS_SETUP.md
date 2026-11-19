@@ -114,10 +114,10 @@ Our PP2 class celebrated their graduation today...
 **Team member example:**
 ```markdown
 ---
-name: "Mrs. Grace Muthoni"
+name: "Lead Educator"
 role: "Headteacher"
 photo: "images/team/headteacher.jpg"
-bio: "Mrs. Muthoni founded the school in 2023..."
+bio: "Experienced educational leader..."
 years: "12 years experience"
 ---
 ```
