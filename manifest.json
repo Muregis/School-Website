@@ -1,0 +1,18 @@
+{
+  "name": "Gracious Love Academy",
+  "short_name": "Gracious Love",
+  "description": "Distinguished CBC Primary & Pre-Primary School in Jomoko, Thika.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a192f",
+  "theme_color": "#0a192f",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/images/logo.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

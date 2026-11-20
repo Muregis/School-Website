@@ -377,7 +377,7 @@ async function fetchWithTimeout(url, timeoutMs = 1800) {
 }
 
 async function fetchContent(filePath) {
-    const cacheKey = 'gla_v2027_clean_' + filePath;
+    const cacheKey = 'gla_v2027_team_' + filePath;
     
     // 1. Instant return from local cache if available (zero-delay on bad networks)
     try {
@@ -448,7 +448,7 @@ async function initDynamicContent() {
             newsGrid.innerHTML = newsData.map(post => `
                 <article class="news-card fade-up visible">
                     <div class="news-image">
-                        <img src="${post.image}" alt="${post.title}" loading="lazy" decoding="async" onerror="this.src='images/gallery-4.jpeg'">
+                        <img src="${post.image}" alt="${post.title}" loading="lazy" decoding="async" onerror="this.src='images/gallery/pp2-graduates-certificates.jpg'">
                     </div>
                     <div class="news-content">
                         <time class="news-date"><i class="fas fa-calendar-day"></i> ${formatNewsDate(post.date)}</time>

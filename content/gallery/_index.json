@@ -1,86 +1,122 @@
 [
   {
-    "image": "images/gallery-4.jpeg",
-    "alt": "PP2 Graduation Ceremony Certificate Award at Gracious Love Academy",
-    "category": "Graduation",
-    "caption": "PP2 Graduation Ceremony & Certificate Award"
-  },
-  {
-    "image": "images/gallery-13.jpeg",
-    "alt": "Annual educational trip and poolside picnic for pupils of Gracious Love Academy",
+    "image": "images/gallery/excursion-nairobi-park.jpg",
+    "alt": "Educational field excursion to Nairobi National Park with learners and teachers of Gracious Love Academy",
     "category": "Excursions",
-    "caption": "Annual School Excursion & Picnic by the Pool"
+    "caption": "Annual Educational Excursion to Nairobi National Park"
   },
   {
-    "image": "images/gallery-1.jpeg",
-    "alt": "Early Years class with their caring teacher at Gracious Love Academy",
+    "image": "images/gallery/pp2-graduates-certificates.jpg",
+    "alt": "Proud PP2 graduates holding certificates with their dedicated teacher at Gracious Love Academy",
+    "category": "Graduation",
+    "caption": "PP2 Graduates Celebrating with Official Certificates"
+  },
+  {
+    "image": "images/gallery/art-painting-cbc.jpg",
+    "alt": "Hands-on water color painting and fine-motor skills guided by teacher at Gracious Love Academy",
     "category": "Early Years",
-    "caption": "PP1 & PP2 Class with Dedicated Class Teacher"
+    "caption": "Hands-On CBC Art & Creative Painting Session"
   },
   {
-    "image": "images/gallery-8.jpeg",
-    "alt": "Pupils in smart academy school uniform at Gracious Love Academy Jomoko Thika",
+    "image": "images/gallery/football-sports-team.jpg",
+    "alt": "Gracious Love Academy football soccer team lined up in official uniform with their coach",
+    "category": "Sports",
+    "caption": "Academy Junior Football Team Ready for Match Day"
+  },
+  {
+    "image": "images/gallery/morning-assembly-uniform.jpg",
+    "alt": "Students gathered in smart school uniform during morning assembly at Gracious Love Academy Jomoko",
     "category": "Classroom",
-    "caption": "Lower Primary Students in Official Academy Uniform"
+    "caption": "Morning Assembly in Official Academy Uniforms"
   },
   {
-    "image": "images/gallery-10.jpeg",
-    "alt": "Pupils having fun at the indoor trampoline and ball pit adventure park",
+    "image": "images/gallery/safari-walk-entrance.jpg",
+    "alt": "Learners and teachers arriving at the Nairobi Safari Walk entrance for nature discovery",
     "category": "Excursions",
-    "caption": "Indoor Adventure Park & Trampoline Excursion"
+    "caption": "Exploring Wildlife & Nature at Nairobi Safari Walk"
   },
   {
-    "image": "images/gallery-14.jpeg",
-    "alt": "Teacher and students enjoying the playground horse train ride at Gracious Love Academy",
+    "image": "images/gallery/choir-recitation-stage.jpg",
+    "alt": "Academy choir performing songs and choral verse on stage",
+    "category": "Music & Arts",
+    "caption": "Academy Choir Performing on Stage"
+  },
+  {
+    "image": "images/gallery/cbc-drawing-session.jpg",
+    "alt": "Outdoor drawing and coloring CBC activity tables at Gracious Love Academy",
     "category": "Early Years",
-    "caption": "Playground Adventure on the Horse Train with Teacher"
+    "caption": "Creative Drawing & Fine-Motor Skill Workshop"
   },
   {
-    "image": "images/gallery-12.jpeg",
-    "alt": "Pupils engaging in physical education with hula-hoops at Gracious Love Academy",
+    "image": "images/gallery/pp2-graduation-class.jpg",
+    "alt": "PP2 graduation class ceremony and celebration at Gracious Love Academy",
+    "category": "Graduation",
+    "caption": "PP2 Class of 2026 Graduation Ceremony"
+  },
+  {
+    "image": "images/gallery/nature-walk-boardwalk.jpg",
+    "alt": "Learners seated together on the forest boardwalk during school field trip",
+    "category": "Excursions",
+    "caption": "Nature Study Walk on Elevated Wooden Boardwalk"
+  },
+  {
+    "image": "images/gallery/outdoor-play-games.jpg",
+    "alt": "Pupils playing outdoor circle games and ring activities in the school yard",
     "category": "Sports",
-    "caption": "Outdoor Physical Education & Coordination Drills"
+    "caption": "Cooperative Ring Games & Outdoor Playtime"
   },
   {
-    "image": "images/gallery-6.jpeg",
-    "alt": "Academy Leadership delivering the graduation address in full academic regalia",
-    "category": "Graduation",
-    "caption": "Academy Leadership Blessing the Graduates"
+    "image": "images/gallery/excursion-teacher-pupils.jpg",
+    "alt": "Teacher and smiling learners resting on boardwalk during safari walk excursion",
+    "category": "Excursions",
+    "caption": "Teacher Mentorship on Wildlife Field Excursion"
   },
   {
-    "image": "images/gallery-3.jpeg",
-    "alt": "Graduation day assembly and student procession at Gracious Love Academy",
-    "category": "Graduation",
-    "caption": "Graduation Day Student Assembly & Presentation"
+    "image": "images/gallery/music-dance-performance.jpg",
+    "alt": "Pupils performing music and cultural dance recitation in yellow academy shirts",
+    "category": "Music & Arts",
+    "caption": "Music & Cultural Dance Recitation on Stage"
   },
   {
-    "image": "images/gallery-2.jpeg",
-    "alt": "PP2 graduating class presenting their graduation song and recitation",
-    "category": "Graduation",
-    "caption": "PP2 Class Graduation Recitation & Choral Verse"
+    "image": "images/gallery/safari-walk-giraffe.jpg",
+    "alt": "Pupils posing in front of the giraffe statue at Nairobi Safari Walk",
+    "category": "Excursions",
+    "caption": "Pupils at the Nairobi Safari Walk Landmark"
   },
   {
-    "image": "images/gallery-11.jpeg",
-    "alt": "Children exploring and playing in the colorful ball pit",
+    "image": "images/gallery/coloring-fine-motor.jpg",
+    "alt": "Early learners collaborating on drawing worksheets and creative shading",
     "category": "Early Years",
-    "caption": "Early Years Sensory Play in the Ball Pit"
+    "caption": "Collaborative Drawing & Color Recognition"
   },
   {
-    "image": "images/gallery-7.jpeg",
-    "alt": "Graduation procession and parent celebration at Gracious Love Academy",
+    "image": "images/gallery/forest-bridge-walk.jpg",
+    "alt": "Pupils and teachers walking across the high suspension forest bridge",
+    "category": "Excursions",
+    "caption": "Canopy Crossing over the Forest Suspension Bridge"
+  },
+  {
+    "image": "images/gallery/choir-worship-presentation.jpg",
+    "alt": "Gracious Love Academy choir during Christian fellowship presentation",
+    "category": "Music & Arts",
+    "caption": "Academy Fellowship Choir Presentation"
+  },
+  {
+    "image": "images/gallery/graduation-celebration-group.jpg",
+    "alt": "Graduation milestone celebration with teachers, parents and pupils",
     "category": "Graduation",
-    "caption": "PP2 Graduates Reciting the School Creed"
+    "caption": "Milestone Graduation Celebration with School Community"
   },
   {
-    "image": "images/gallery-5.jpeg",
-    "alt": "Parents, teachers and pupils celebrating graduation day at the Academy",
-    "category": "Graduation",
-    "caption": "Graduation Day Celebrations with Parents & Community"
+    "image": "images/gallery/campus-lunch-snack-time.jpg",
+    "alt": "Nutritious outdoor snack and lunch time at Gracious Love Academy campus",
+    "category": "Classroom",
+    "caption": "Hot Nutritious Meal & Outdoor Fellowship Time"
   },
   {
-    "image": "images/gallery-9.jpeg",
-    "alt": "Morning exercises and physical fitness drills in the school quad",
-    "category": "Sports",
-    "caption": "Morning Physical Warm-ups & Fitness Drills"
+    "image": "images/gallery/whole-school-assembly.jpg",
+    "alt": "Gracious Love Academy student body assembled in the school compound",
+    "category": "Classroom",
+    "caption": "Whole School Gathering & Values Recitation"
   }
 ]
